@@ -1,0 +1,10 @@
+@use '../chunks' as c;
+
+.calendar {
+    @extend %display;
+
+    > .Calendar {
+        @extend %grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+}

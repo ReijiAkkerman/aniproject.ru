@@ -1,0 +1,26 @@
+@use '../chunks' as c;
+
+.reg {
+    > main {
+        > form {
+            @extend %login-form;
+            margin-top: 150px;
+
+            > div {
+                width: 600px;
+
+                > p {
+                    @extend %login-p;
+                }
+
+                > input {
+                    @extend %login-input;
+                }
+            }
+
+            > button {
+                @extend %login-button;
+            }
+        }
+    }
+}

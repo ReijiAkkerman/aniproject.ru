@@ -1,0 +1,86 @@
+@use '../chunks' as c;
+
+header.common {
+    border-bottom: c.$border;
+
+
+    > .Header {
+        margin: 0 auto;
+        max-width: 1700px;
+        padding: 10px;
+
+        .Actions {
+            gap: 20px;
+            padding-right: 10px;
+            border-right: c.$border;
+
+            > button {
+                padding: 4px 10px;
+                font-size: 25px;
+                font-weight: bold;
+                border-bottom: c.$border-transparent;
+
+                &:hover {
+                    border-color: c.$border-color;
+                }
+            }
+
+            .Search {
+                margin: auto 10px auto 0;
+                padding: 2px 10px;
+                border: c.$border;
+                border-radius: 15px;
+
+                > input {
+                    font-size: 20px;
+                    padding-left: 5px;
+                }
+
+                ~ button > svg {
+                    width: 25px;
+                    height: 25px;
+                    padding: 10px;
+                    border-bottom: c.$border-transparent;
+
+                    &:hover {
+                        border-color: c.$border-color;
+                    }
+                }
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    padding-left: 10px;
+                    border-left: c.$border;
+                    border-bottom: c.$border-transparent;
+                }
+            }
+        }
+
+        .Info {
+            padding-left: 10px;
+
+            > p {
+                margin: auto;
+                font-size: 28px;
+            }
+        }
+
+        > .Links {
+            padding-left: 10px;
+            border-left: c.$border;
+
+            svg {
+                width: 35px;
+                height: 35px;
+                padding: 5px;
+                fill: #555;
+                border-bottom: c.$border-transparent;
+
+                &:hover {
+                    border-color: c.$border-color;
+                }
+            }
+        }
+    }
+}

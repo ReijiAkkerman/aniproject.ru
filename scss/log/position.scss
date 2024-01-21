@@ -1,0 +1,20 @@
+@use '../chunks' as c;
+
+.log {
+    @extend %display;
+
+    > main {
+        @extend %display;
+
+        > form {
+            @extend %flex-start;
+            flex-direction: column;
+            align-items: center;
+
+            > div {
+                @extend %flex-between;
+                align-items: center;
+            }
+        }
+    }
+}

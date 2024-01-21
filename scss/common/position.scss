@@ -1,0 +1,39 @@
+@use '../chunks' as c;
+
+header.common {
+    display: block;
+    position: relative;
+
+
+    > .Header {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+
+        > div:first-of-type {
+            @extend %flex-start;
+
+            > .Actions {
+                @extend %flex-start;
+    
+                > div {
+                    @extend %flex-start;
+    
+                    > .Search {
+                        @extend %flex-start;
+                    }
+                }
+            }
+    
+            > .Info {
+                @extend %flex-start;
+            }
+        }
+
+
+        > .Links {
+            @extend %flex-start;
+            flex-direction: row-reverse;
+        }
+    }
+}
