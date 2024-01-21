@@ -1,0 +1,27 @@
+.log, .log > main {
+  display: block;
+  position: relative;
+}
+
+.log > main > form > div, .log > main > form {
+  display: flex;
+  position: relative;
+}
+
+.log > main > form {
+  justify-content: start;
+}
+
+.log > main > form > div {
+  justify-content: space-between;
+}
+
+.log > main > form {
+  flex-direction: column;
+  align-items: center;
+}
+.log > main > form > div {
+  align-items: center;
+}
+
+/*# sourceMappingURL=position.css.map */

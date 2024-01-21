@@ -1,0 +1,43 @@
+.log > main > form {
+  border: 1px solid #000;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 200px auto 0 auto;
+  padding: 40px 100px;
+  gap: 20px;
+}
+
+.log > main > form > div > p {
+  font-size: 40px;
+}
+
+.log > main > form > div input {
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+  padding: 2px 10px;
+  width: 370px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.log > main > form > button {
+  font-size: 30px;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+.log > main > form > button:hover {
+  background-color: #ddd;
+}
+
+.log > main > form > div {
+  width: 600px;
+}
+.log > main > form > a {
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */

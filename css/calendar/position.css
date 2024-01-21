@@ -1,0 +1,15 @@
+.calendar {
+  display: block;
+  position: relative;
+}
+
+.calendar > .Calendar {
+  display: grid;
+  position: relative;
+}
+
+.calendar > .Calendar {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/*# sourceMappingURL=position.css.map */

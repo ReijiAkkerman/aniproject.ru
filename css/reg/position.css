@@ -1,0 +1,19 @@
+.reg > main > form > div, .reg > main > form {
+  display: flex;
+  position: relative;
+}
+
+.reg > main > form {
+  justify-content: start;
+}
+
+.reg > main > form > div {
+  justify-content: space-between;
+}
+
+.reg > main > form {
+  flex-direction: column;
+  align-items: center;
+}
+
+/*# sourceMappingURL=position.css.map */

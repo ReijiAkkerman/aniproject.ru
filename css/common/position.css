@@ -1,0 +1,23 @@
+header.common > .Header > div:first-of-type, header.common > .Header > div:first-of-type > .Actions, header.common > .Header > div:first-of-type > .Actions > div, header.common > .Header > div:first-of-type > .Actions > div > .Search, header.common > .Header > div:first-of-type > .Info, header.common > .Header > .Links {
+  display: flex;
+  position: relative;
+}
+
+header.common > .Header > div:first-of-type, header.common > .Header > div:first-of-type > .Actions, header.common > .Header > div:first-of-type > .Actions > div, header.common > .Header > div:first-of-type > .Actions > div > .Search, header.common > .Header > div:first-of-type > .Info, header.common > .Header > .Links {
+  justify-content: start;
+}
+
+header.common {
+  display: block;
+  position: relative;
+}
+header.common > .Header {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+header.common > .Header > .Links {
+  flex-direction: row-reverse;
+}
+
+/*# sourceMappingURL=position.css.map */

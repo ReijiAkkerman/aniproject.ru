@@ -1,0 +1,71 @@
+header.common {
+  border-bottom: 1px solid #000;
+}
+header.common > .Header {
+  margin: 0 auto;
+  max-width: 1700px;
+  padding: 10px;
+}
+header.common > .Header .Actions {
+  gap: 20px;
+  padding-right: 10px;
+  border-right: 1px solid #000;
+}
+header.common > .Header .Actions > button {
+  padding: 4px 10px;
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+header.common > .Header .Actions > button:hover {
+  border-color: #000;
+}
+header.common > .Header .Actions .Search {
+  margin: auto 10px auto 0;
+  padding: 2px 10px;
+  border: 1px solid #000;
+  border-radius: 15px;
+}
+header.common > .Header .Actions .Search > input {
+  font-size: 20px;
+  padding-left: 5px;
+}
+header.common > .Header .Actions .Search ~ button > svg {
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+header.common > .Header .Actions .Search ~ button > svg:hover {
+  border-color: #000;
+}
+header.common > .Header .Actions .Search svg {
+  width: 20px;
+  height: 20px;
+  padding-left: 10px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+header.common > .Header .Info {
+  padding-left: 10px;
+}
+header.common > .Header .Info > p {
+  margin: auto;
+  font-size: 28px;
+}
+header.common > .Header > .Links {
+  padding-left: 10px;
+  border-left: 1px solid #000;
+}
+header.common > .Header > .Links svg {
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  fill: #555;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+header.common > .Header > .Links svg:hover {
+  border-color: #000;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,42 @@
+.reg > main > form {
+  border: 1px solid #000;
+  border-radius: 20px;
+  width: fit-content;
+  margin: 200px auto 0 auto;
+  padding: 40px 100px;
+  gap: 20px;
+}
+
+.reg > main > form > div > p {
+  font-size: 40px;
+}
+
+.reg > main > form > div > input {
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+  padding: 2px 10px;
+  width: 370px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.reg > main > form > button {
+  font-size: 30px;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+.reg > main > form > button:hover {
+  background-color: #ddd;
+}
+
+.reg > main > form {
+  margin-top: 150px;
+}
+.reg > main > form > div {
+  width: 600px;
+}
+
+/*# sourceMappingURL=style.css.map */
