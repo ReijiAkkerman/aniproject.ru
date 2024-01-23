@@ -1,6 +1,7 @@
+@use 'pos' as c;
+
 button {
-    display: block;
-    position: relative;
+    @include c.display;
 }
 
 svg {

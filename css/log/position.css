@@ -1,26 +1,22 @@
-.log, .log > main {
+.log {
   display: block;
   position: relative;
 }
-
-.log > main > form > div, .log > main > form {
-  display: flex;
+.log > main {
+  display: block;
   position: relative;
 }
-
 .log > main > form {
+  display: flex;
+  position: relative;
   justify-content: start;
-}
-
-.log > main > form > div {
-  justify-content: space-between;
-}
-
-.log > main > form {
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 }
 .log > main > form > div {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
   align-items: center;
 }
 

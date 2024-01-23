@@ -1,10 +1,9 @@
-@use '../chunks' as c;
+@use '../pos' as c;
 
 .calendar {
-    @extend %display;
+    @include c.display;
 
     > .Calendar {
-        @extend %grid;
-        grid-template-columns: repeat(7, 1fr);
+        @include c.grid(repeat(7, 1fr));
     }
 }

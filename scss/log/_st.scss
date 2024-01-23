@@ -1,0 +1,36 @@
+@use '../st' as c;
+
+%login-form {
+    border: c.$border;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 200px auto 0 auto;
+    padding: 40px 100px;
+    gap: 20px;
+}
+
+%login-p {
+    font-size: 40px;
+}
+
+%login-input {
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    padding: 2px 10px;
+    width: 370px;
+    border-top: c.$border;
+    border-bottom: c.$border;
+}
+
+%login-button {
+    font-size: 30px;
+    border-left: c.$border;
+    border-right: c.$border;
+    padding: 10px 20px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #ddd;
+    }
+}

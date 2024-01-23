@@ -1,14 +1,12 @@
-@use '../chunks' as c;
+@use '../pos' as c;
 
 .reg {
     > main {
         > form {
-            @extend %flex-start;
-            flex-direction: column;
-            align-items: center;
+            @include c.flex(start, center, column);
 
             > div {
-                @extend %flex-between;
+                @include c.flex(space-between);
             }
         }
     }

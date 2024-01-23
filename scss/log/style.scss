@@ -1,4 +1,4 @@
-@use '../chunks' as c;
+@use 'st' as c;
 
 .log {
     > main {
@@ -19,10 +19,6 @@
 
             > button {
                 @extend %login-button;
-
-                // &:hover {
-                //     background-color: #ddd;
-                // }
             }
 
             > a {

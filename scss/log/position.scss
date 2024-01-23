@@ -1,19 +1,16 @@
-@use '../chunks' as c;
+@use '../pos' as c;
 
 .log {
-    @extend %display;
+    @include c.display;
 
     > main {
-        @extend %display;
+        @include c.display;
 
         > form {
-            @extend %flex-start;
-            flex-direction: column;
-            align-items: center;
+            @include c.flex(start, center, column);
 
             > div {
-                @extend %flex-between;
-                align-items: center;
+                @include c.flex(space-between, center);
             }
         }
     }

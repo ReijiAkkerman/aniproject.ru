@@ -1,0 +1,19 @@
+@mixin display {
+    display: block;
+    position: relative;
+}
+
+@mixin flex($just_cont: null, $al_it: null, $fl_dir: null) {
+    display: flex;
+    position: relative;
+    justify-content: $just_cont;
+    align-items: $al_it;
+    flex-direction: $fl_dir;
+}
+
+@mixin grid($col: null, $row: null) {
+    display: grid;
+    position: relative;
+    grid-template-columns: $col;
+    grid-template-rows: $row;
+}

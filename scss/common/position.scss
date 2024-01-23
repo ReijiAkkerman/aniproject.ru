@@ -1,39 +1,34 @@
-@use '../chunks' as c;
+@use '../pos' as c;
 
 header.common {
-    display: block;
-    position: relative;
-
+    @include c.display;
 
     > .Header {
-        display: flex;
-        position: relative;
-        justify-content: space-between;
+        @include c.flex(space-between);
 
         > div:first-of-type {
-            @extend %flex-start;
+            @include c.flex(start);
 
             > .Actions {
-                @extend %flex-start;
+                @include c.flex(start);
     
                 > div {
-                    @extend %flex-start;
+                    @include c.flex(start);
     
                     > .Search {
-                        @extend %flex-start;
+                        @include c.flex(start);
                     }
                 }
             }
     
             > .Info {
-                @extend %flex-start;
+                @include c.flex(start);
             }
         }
 
 
         > .Links {
-            @extend %flex-start;
-            flex-direction: row-reverse;
+            @include c.flex(start, null, row-reverse);
         }
     }
 }
