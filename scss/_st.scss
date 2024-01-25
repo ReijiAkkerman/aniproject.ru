@@ -1,6 +1,13 @@
-$border: 1px solid #000;
-$border-transparent: 1px solid #0000;
 $border-color: #000;
-
+$transparent-border-color: #0000;
 $svg-color: #000;
 $text-color: #000;
+
+@mixin border($type, $color: $border-color) {
+    @if $type == none {
+        border: 1px solid $color;
+    }
+    @else {
+        border#{-$type}: 1px solid $color;
+    }
+}

@@ -1,3 +1,22 @@
-
+.calendar > .Calendar > .Day {
+  height: 200px;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+}
+.calendar > .Calendar > .Day.start {
+  border-left: 1px solid #000;
+}
+.calendar > .Calendar > .Day > .Header {
+  width: 100%;
+}
+.calendar > .Calendar > .Day > .Header > button {
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+  background-color: #eee;
+}
+.calendar > .Calendar > .Day > .Header > button:hover {
+  background-color: #ccc;
+}
 
 /*# sourceMappingURL=style.css.map */
