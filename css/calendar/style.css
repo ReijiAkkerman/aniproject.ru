@@ -18,5 +18,73 @@
 .calendar > .Calendar > .Day > .Header > button:hover {
   background-color: #ccc;
 }
+.calendar > .NewEntry {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6666666667);
+}
+.calendar > .NewEntry .bold {
+  font-weight: bold;
+}
+.calendar > .NewEntry > form {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 20px;
+  width: fit-content;
+  padding: 20px;
+}
+.calendar > .NewEntry > form > .Main {
+  padding: 10px 20px 10px 0;
+  border-right: 1px solid #000;
+  margin-right: 20px;
+}
+.calendar > .NewEntry > form > .Main p {
+  text-align: center;
+}
+.calendar > .NewEntry > form > .Main input[type=text] {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+}
+.calendar > .NewEntry > form > .Main textarea {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 100%;
+}
+.calendar > .NewEntry > form > .Main > .Date {
+  margin-top: 7px;
+}
+.calendar > .NewEntry > form > .Main > .Date input[type=text] {
+  font-size: 22px;
+  width: 70px;
+}
+.calendar > .NewEntry > form > .Main > .Date > div:first-of-type {
+  padding-right: 15px;
+  border-right: 1px solid #000;
+  margin-right: 15px;
+}
+.calendar > .NewEntry > form > .Main > .Date > div > div {
+  margin-top: 10px;
+}
+.calendar > .NewEntry > form > .Main > .Date > div > div:first-of-type {
+  gap: 20px;
+}
+.calendar > .NewEntry > form > .Main > .Repeat {
+  padding: 10px 0;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  margin-top: 10px;
+}
+.calendar > .NewEntry > form > .Main > .Repeat > p {
+  padding-bottom: 10px;
+}
+.calendar > .NewEntry > form > .Main > .Supplement input[type=text] {
+  font-size: 22px;
+  width: 70px;
+}
 
 /*# sourceMappingURL=style.css.map */

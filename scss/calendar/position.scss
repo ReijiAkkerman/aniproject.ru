@@ -6,4 +6,70 @@
     > .Calendar {
         @include c.grid(repeat(7, 1fr));
     }
+
+    > .NewEntry {
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+
+        > form {
+            @include c.flex(center, center);
+
+            > .Main {
+                @include c.display;
+
+                > .Date {
+                    @include c.flex(center);
+
+                    > div {
+                        @include c.display;
+
+                        > div {
+                            @include c.flex(space-around);
+                        }
+                    }
+                }
+
+                > .Repeat {
+                    @include c.display;
+
+                    > div {
+                        @include c.flex(space-between);
+
+                        > div {
+                            @include c.display;
+                        }
+                    }
+                }
+
+                > .Supplement {
+                    @include c.display;
+
+                    > .Week {
+                        @include c.display;
+                        display: none;
+
+                        > div {
+                            @include c.flex(space-around);
+                        }
+                    }
+
+                    > .SetTime {
+                        @include c.flex(space-around);
+                        display: none;
+                    }
+
+                    > .Interval {
+                        @include c.flex(space-around);
+                        display: none;
+                    }
+                }
+            }
+
+            > .Adds {
+                @include c.display;
+            }
+        }
+    }
 }

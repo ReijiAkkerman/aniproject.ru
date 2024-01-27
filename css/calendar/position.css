@@ -7,5 +7,78 @@
   position: relative;
   grid-template-columns: repeat(7, 1fr);
 }
+.calendar > .NewEntry {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+.calendar > .NewEntry > form {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.calendar > .NewEntry > form > .Main {
+  display: block;
+  position: relative;
+}
+.calendar > .NewEntry > form > .Main > .Date {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.calendar > .NewEntry > form > .Main > .Date > div {
+  display: block;
+  position: relative;
+}
+.calendar > .NewEntry > form > .Main > .Date > div > div {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+.calendar > .NewEntry > form > .Main > .Repeat {
+  display: block;
+  position: relative;
+}
+.calendar > .NewEntry > form > .Main > .Repeat > div {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.calendar > .NewEntry > form > .Main > .Repeat > div > div {
+  display: block;
+  position: relative;
+}
+.calendar > .NewEntry > form > .Main > .Supplement {
+  display: block;
+  position: relative;
+}
+.calendar > .NewEntry > form > .Main > .Supplement > .Week {
+  display: block;
+  position: relative;
+  display: none;
+}
+.calendar > .NewEntry > form > .Main > .Supplement > .Week > div {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+.calendar > .NewEntry > form > .Main > .Supplement > .SetTime {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  display: none;
+}
+.calendar > .NewEntry > form > .Main > .Supplement > .Interval {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  display: none;
+}
+.calendar > .NewEntry > form > .Adds {
+  display: block;
+  position: relative;
+}
 
 /*# sourceMappingURL=position.css.map */
