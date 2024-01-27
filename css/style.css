@@ -4,6 +4,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0);
   font-family: Jura;
+  font-size: 20px;
 }
 
 input:-webkit-autofill,
@@ -32,6 +33,7 @@ button {
 }
 
 svg {
+  vertical-align: middle;
   fill: #000;
 }
 

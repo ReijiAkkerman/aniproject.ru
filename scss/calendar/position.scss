@@ -13,8 +13,22 @@
         justify-content: center;
         align-items: center;
 
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            position: relative;
+
+            &:before {
+                display: inline-block;
+                position: absolute;
+            }
+        }
+
         > form {
-            @include c.flex(center, center);
+            @include c.flex(center);
 
             > .Main {
                 @include c.display;
@@ -68,7 +82,13 @@
             }
 
             > .Adds {
-                @include c.display;
+                @include c.flex(space-between, null, column);
+
+                > div {
+                    > .list {
+                        @include c.flex(space-between);
+                    }
+                }
             }
         }
     }

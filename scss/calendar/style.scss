@@ -36,7 +36,30 @@
         background-color: #fffa;
 
         .bold {
+            font-size: 22px;
             font-weight: bold;
+        }
+
+        label {
+            padding-left: 30px;
+
+            &:before {
+                content: "";
+                bottom: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                @include c.border(none);
+            }
+        }
+
+        input[type="checkbox"]:checked + label:before {
+            content: "\2713";
+            font-size: 20px;
+            font-weight: bold;
+            color: c.$text-color;
+            text-align: center;
+            
         }
 
         > form {
@@ -110,6 +133,36 @@
                         font-size: 22px;
                         width: 70px;
                     }
+                }
+            }
+
+            > .Adds {
+                > div {
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px 0;
+
+                    > .list {
+                        min-width: 200px;
+                        @include c.border(none);
+                        margin: 10px 0;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                            padding-bottom: 1px;
+                        }
+
+                        > p {
+                            width: 100%;
+                            padding-left: 3px;
+                            @include c.border(right);
+                        }
+                    }
+                }
+
+                > div:first-of-type {
+                    @include c.border(bottom);
                 }
             }
         }
