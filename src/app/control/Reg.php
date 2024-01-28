@@ -1,51 +1,54 @@
 <?php
     namespace project\control;
 
-    require_once __DIR__ . '/abstract/Page.php';
+    require_once __DIR__ . "abstract/Page.php";
 
-    require_once __DIR__ . '/traits/Init.php';
-    require_once __DIR__ . '/traits/ValidateUser.php';
-    require_once __DIR__ . '/traits/ViewPage.php';
+    require_once __DIR__ . "traits/ViewPage.php";
+    require_once __DIR__ . "traits/ValidateUser.php";
 
     class Reg extends Page {
-        public $login;
-        public $password;
-
-        use Init;
-        use ValidateUser;
         use ViewPage;
 
         public function __construct() {
+
+        }
+
+        public function registrate() {
             
         }
 
-        public function registrate(): void {
-            try {
-                $timestamp = time();
-                $mysql = new \mysqli('localhost', 'User', 'kISARAGIeKI4', 'User');
-                $query = "INSERT INTO User(login, password, registration_timestamp) VALUES ('$login', '$password', $timestamp)";
-                $mysql->query($query);
-                $mysql->close();
-                $users = ["Calendar", "Todo", "Scheduler"];
-                foreach($users as $user) {
-                    $mysql = new \mysqli('localhost', $user, 'kISARAGIeKI4', $user);
-                    $query = [
-                        "CREATE TABLE $user(
-                            id SERIAL,
-                            header TEXT,
-                            content TEXT,
-                            creation_timestamp INT,
-                            start_timestamp INT,
-                            end_timestamp INT,
-                            whole_day BOOLEAN
-                        )"
-                    ];
+        private function init() {
+            $mysql = new \mysqli('localhost', 'root', 'KisaragiEki4');
+            $databases = [
+                "Users",
+                "Entries",
+                "Words"
+            ];
+            $queries = [
+                "CREATE DATABASE IF NOT EXISTS $database",
+                "CREATE USER IF NOT EXISTS '$database'@'localhost' IDENTIFIED BY 'kISARAGIeKI4'",
+                "GRANT SELECT, UPDATE, INSERT, DELETE, DROP, CREATE ON {$database}.* TO '{$database}'@'localhost'"
+            ];
+            foreach($databases as $database) {
+                foreach($queries as $query) {
                     $mysql->query($query);
-                    $mysql->close();
                 }
             }
-            catch(Throwable) {
-                header("Location: ../error/view");
-            }
+            $query = "USE $database";
+            $mysql->query($query);
+            $query = "CREATE TABLE IF NOT EXISTS users(
+                ID SERIAL,
+                email VARCHAR(255),
+                login VARCHAR(255),
+                name VARCHAR(255),
+                password VARCHAR(255),
+                registration_time INT,
+                last_enter_time INT, 
+                groups_users TEXT
+            )";
+            $mysql->query($query);
+            $query = "REVOKE CREATE, DROP ON Users.* FROM 'Users'@'localhost'";
+            $mysql->query($query);
+            $mysql->close();
         }
     }
