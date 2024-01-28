@@ -1,10 +1,17 @@
 <?php
     namespace project\control;
 
+<<<<<<< HEAD
     require_once __DIR__ . "abstract/Page.php";
 
     require_once __DIR__ . "traits/ViewPage.php";
     require_once __DIR__ . "traits/ValidateUser.php";
+=======
+    require_once __DIR__ . "/abstract/Page.php";
+
+    require_once __DIR__ . "/traits/ViewPage.php";
+    require_once __DIR__ . "/traits/ValidateUser.php";
+>>>>>>> ea30fae (В начале работал над веткой registration - в ней реализовал функцию init().)
 
     class Reg extends Page {
         use ViewPage;
