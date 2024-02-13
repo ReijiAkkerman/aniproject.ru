@@ -1,33 +1,12 @@
 <?php
-    class A {
-        public $str = 'string';
-
+    class hello {
         public function hello() {
-            $test_string = $this->str . " " . $this->str;
-
-            $str1;
-            $str2;
-            $str3;
-
-            $this->test1($test_string);
-            $this->test2($test_string);
-            $this->test3($test_string);
-
-            echo $str1 . '_' . $str2 . '_' . $str3 . "\n";
-        }
-
-        private function test1($str) {
-            $str1 = $str[0];
-        }
-
-        private function test2($str) {
-            $str2 = $str[2];
-        }
-
-        private function test3($str) {
-            $str3 = $str[4];
+            $mysql = new mysqli('localhost', 'root', 'KisaragiEki4', 'test');
+            $query = "SELECT EXISTS( SELECT ID,name FROM hello WHERE surname IN('kasugano', 'tachibana')) AS found";
+            $result = $mysql->query($query);
+            echo $result->num_rows;
         }
     }
 
-    $obj = new A;
+    $obj = new hello;
     $obj->hello();
