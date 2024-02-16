@@ -6,7 +6,7 @@
     <body class="reg">
     <?php include_once __DIR__ . '/components/common/header.php' ?>
         <main>
-            <form action="../calendar/view" method="POST">
+            <form action="../reg/registrateUser" method="POST">
                 <div>
                     <p>E-mail</p>
                     <input type="text" name="email">

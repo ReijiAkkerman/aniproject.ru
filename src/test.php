@@ -1,12 +1,16 @@
 <?php
-    class hello {
+    class A {
         public function hello() {
-            $mysql = new mysqli('localhost', 'root', 'KisaragiEki4', 'test');
-            $query = "SELECT EXISTS( SELECT ID,name FROM hello WHERE surname IN('kasugano', 'tachibana')) AS found";
-            $result = $mysql->query($query);
-            echo $result->num_rows;
+            $mysql = new \mysqli('172.18.0.2', 'root', 'KisaragiEki4');
+            $query = "SHOW TABLES IN Users";
+            $data = $mysql->query($query);
+            foreach($data as $row) {
+                if($row['Tables_in_Users'] === 'users')
+                    echo $row['Tables_in_Users'] . "\n";
+            }
+            $mysql->close();
         }
     }
 
-    $obj = new hello;
+    $obj = new A;
     $obj->hello();

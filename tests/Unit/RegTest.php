@@ -7,22 +7,14 @@
     use project\control\Reg;
     use project\control\enum\Regex;
 
-    $_POST['email'] = 'reijiakkerman@gmail.com';
-    $_POST['login'] = 'ReijiAkkerman';
-    $_POST['name'] = 'Reiji';
-    $_POST['password1'] = 'KisaragiEki4';
-    $_POST['password2'] = 'KisaragiEki4';
-
     class RegTest extends TestCase {
-        
-
         private function testGetFieldValues() {
-            $obj = new Reg();
             $_POST['email'] = 'reijiakkerman@gmail.com';
             $_POST['login'] = 'ReijiAkkerman';
             $_POST['name'] = 'Reiji';
             $_POST['password1'] = 'KisaragiEki4';
             $_POST['password2'] = 'KisaragiEki4';
+            $obj = new Reg();
             $this->assertIsString($obj->email);
             $this->assertIsString($obj->login);
             $this->assertIsString($obj->name);
@@ -31,12 +23,12 @@
         }
 
         private function testGetValues(): void {
-            $obj = new Reg;
             $_POST['email'] = 'reijiakkerman@gmail.com';
             $_POST['login'] = 'ReijiAkkerman';
             $_POST['name'] = 'Reiji';
             $_POST['password1'] = 'KisaragiEki4';
             $_POST['password2'] = '';
+            $obj = new Reg;
             $obj->fields = [
                 'email',
                 'login',

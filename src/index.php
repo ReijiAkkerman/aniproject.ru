@@ -1,6 +1,8 @@
 <?php
     namespace project;
 
+    require_once __DIR__ . "/../vendor/autoload.php";
+
     use project\core\Router;
 
     ini_set('display_errors', 1);

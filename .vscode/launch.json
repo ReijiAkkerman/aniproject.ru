@@ -43,6 +43,15 @@
                 "uriFormat": "http://localhost:%s/log/view",
                 "action": "openExternally"
             }
+        },
+        {
+            "name": "Listen for Xdebug (Docker)",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/var/www/html": "${workspaceFolder}"
+            }
         }
     ]
 }

@@ -4,7 +4,6 @@
     require_once __DIR__ . "/abstract/Page.php";
 
     require_once __DIR__ . "/traits/ViewPage.php";
-    require_once __DIR__ . "/traits/ValidateUser.php";
 
     use project\control\enum\Regex;
 
@@ -34,7 +33,7 @@
             else {
                 $is_user = $this->isUser();
                 if($is_user) {
-                    header("Location: ../error/view?");
+                    header("Location: ../error/view?error_message={$this->error_message}");
                 }
                 else {
                     $this->registrate();
@@ -47,14 +46,20 @@
 
 
         
-        public function isUser($server = 'localhost'): bool {
-            $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
+        private function isUser(string $server = 'localhost', string $connect_from = 'localhost'): bool {
+            try {
+                $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
+            }
+            catch(\mysqli_sql_exception $exception) {
+                $this->init($server, '%');
+                return false;
+            }
             $query = "SELECT email,login FROM users WHERE email='{$this->email}' && login='{$this->login}'";
             $result = $mysql->query($query);
             if($result->num_rows) {
                 if($result->num_rows > 1) {
                     $this->error_message .= urlencode("Ошибка!!! Уникальные поля содержат одинаковые данные!!!\n");
-                    return false;
+                    return true;
                 }
                 else {
                     foreach($result as $row) {
@@ -63,14 +68,14 @@
                         if($this->login == $row['login'])
                             $this->error_message .= urlencode("Внимание! Указанный логин уже занят!\n");
                     }
-                    return false;
+                    return true;
                 }
             } 
             else 
-                return true;
+                return false;
         }
         
-        public function registrate(string $server = 'localhost'): void {
+        private function registrate(string $server = 'localhost'): void {
             $reg_time = time();
             $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
             $query = "INSERT INTO users(
@@ -122,7 +127,7 @@
             $mysql->close();
         }
         
-        public function init(string $server = 'localhost', string $connect_from = 'localhost'): void {
+        private function init(string $server = 'localhost', string $connect_from = 'localhost'): void {
             $mysql = new \mysqli($server, 'root', 'KisaragiEki4');
             $databases = [
                 "Users",
@@ -143,8 +148,8 @@
             $mysql->query($query);
             $query = "CREATE TABLE IF NOT EXISTS users(
                 ID SERIAL,
-                email VARCHAR(255),
-                login VARCHAR(255),
+                email VARCHAR(255) UNIQUE,
+                login VARCHAR(255) UNIQUE,
                 name VARCHAR(255),
                 password VARCHAR(255),
                 registration_time INT,
