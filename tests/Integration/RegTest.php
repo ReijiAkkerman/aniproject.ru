@@ -7,7 +7,7 @@
     use PHPUnit\Framework\TestCase;
 
     class RegTest extends TestCase {
-        private function testIsUser(): void {
+        private function testIsNewUser(): void {
             // Входные данные 
 
             $_POST['email'] = 'reijiakkerman@gmail.com';

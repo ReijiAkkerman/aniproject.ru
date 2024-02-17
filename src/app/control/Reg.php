@@ -27,18 +27,19 @@
         use ViewPage;
 
         public function registrateUser(): void {
-            $this->getFieldValues();
-            if($this->error_message) 
-                header("Location: ../error/view?error_message={$this->error_message}");
-            else {
-                $is_user = $this->isUser();
-                if($is_user) {
-                    header("Location: ../error/view?error_message={$this->error_message}");
-                }
-                else {
+            $fieldsAreGood = $this->getFieldValues();
+            if($fieldsAreGood) {
+                $newUser = $this->isNewUser();
+                if($newUser)
                     $this->registrate();
-                    header("Location: ../calendar/view");
+                else {
+                    header("Location: ../error/view?{$this->error_message}");
+                    exit;
                 }
+            }
+            else {
+                header("Location: ../error/view?{$this->error_message}");
+                exit;
             }
         }
 
@@ -46,20 +47,20 @@
 
 
         
-        private function isUser(string $server = 'localhost', string $connect_from = 'localhost'): bool {
+        private function isNewUser(string $server = 'localhost', string $connect_from = 'localhost'): bool {
             try {
                 $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
             }
             catch(\mysqli_sql_exception $exception) {
                 $this->init($server, '%');
-                return false;
+                return true;
             }
             $query = "SELECT email,login FROM users WHERE email='{$this->email}' && login='{$this->login}'";
             $result = $mysql->query($query);
             if($result->num_rows) {
                 if($result->num_rows > 1) {
                     $this->error_message .= urlencode("Ошибка!!! Уникальные поля содержат одинаковые данные!!!\n");
-                    return true;
+                    return false;
                 }
                 else {
                     foreach($result as $row) {
@@ -68,11 +69,11 @@
                         if($this->login == $row['login'])
                             $this->error_message .= urlencode("Внимание! Указанный логин уже занят!\n");
                     }
-                    return true;
+                    return false;
                 }
             } 
             else 
-                return false;
+                return true;
         }
         
         private function registrate(string $server = 'localhost'): void {
@@ -161,12 +162,8 @@
             $mysql->query($query);
             $mysql->close();
         }
-        
-        public function defineRequestType(): bool {
 
-        }
-        
-        private function getFieldValues(): bool {
+        public function getFieldValues(): bool {
             $this->fields = [
                 'email',
                 'login',
@@ -174,55 +171,70 @@
                 'password1',
                 'password2'
             ];
-            $values = $this->getValues();
-            if($values){
-                $this->email = $values['email'];
-                $this->login = $values['login'];
-                $this->name = $values['name'];
-                $this->password = $this->getPassword($values['password1'], $values['password2']);
-                return true;
-            }
-            else {
-                $this->error_message .= urlencode("Внимание! Введенные данные содержат недопустимые символы!\n");
-                return false;
-            }
-        }
-
-        private function getValues(): array|false {
-            $array = [];
+            $fieldsAreGood = true;
             for($i = 0; $i < sizeof($this->fields); $i++) {
-                if($this->fields[$i] == 'password1') {
-                    $prop = $this->fields[$i];
-                    $i++;
-                    $func = $this->getRegex('password');
-                    $array[$prop] = $this->validateField($func, $_POST[$prop]);
-                    $array[$this->fields[$i]] = $this->validateField($func, $_POST[$this->fields[$i]]);
-                }
-                else {
-                    $prop = $this->fields[$i];
-                    $func = $this->getRegex($prop);
-                    $array[$prop] = $this->validateField($func, $_POST[$prop]);
-                }
+                $good = $this->isGoodField($this->fields[$i]);
+                if(!$good)
+                    $fieldsAreGood = false;
             }
-            if(!in_array(false, $array, true))
-                return $array;
-            else 
-                return false;
-        }
-
-        private function validateField(Regex $func, string $field_value = ''): string|false {
-            $regex = $func->value;
-            if($field_value)
-                if(preg_match($regex, $field_value))
-                    return $field_value;
+            if($fieldsAreGood) {
+                $this->password = $this->getPassword();
+                if($this->password) {
+                    $this->email = $_POST['email'];
+                    $this->login = $_POST['login'];
+                    $this->name = $_POST['name'];
+                    return true;
+                }
                 else 
                     return false;
+            }
             else 
                 return false;
         }
+        
+        public function isGoodField(string $field): bool {
+            if(isset($_POST[$field])) {
+                if($_POST[$field]) {
+                    if($field == 'password1' || $field == 'password2')
+                        $regex = $this->getRegex('password');
+                    else 
+                        $regex = $this->getRegex($field);
+                    $matched = preg_match($regex->value, $_POST[$field]);
+                    if($matched) 
+                        return true;
+                    else {
+                        $fieldName = $this->getFieldName($field);
+                        $this->error_message .= urlencode("Внимание! Поле '$fieldName' имеет недопустимые символы или длину!\n");
+                        return false;
+                    }
+                }
+                else {
+                    $fieldName = $this->getFieldName($field);
+                    $this->error_message .= urlencode("Внимание! Поле '$fieldName' не заполнено!\n");
+                    return false;
+                }
+            }
+            else {
+                $fieldName = $this->getFieldName($field);
+                $this->error_message .= urlencode("Ошибка!!! Поле '$fieldName' не найдено!!!\n");
+                return false;
+            }
+        }
 
-        private function getRegex(string $field): Regex|false {
-            $regex = match($field) {
+        public function getFieldName(string $name = 'password2'): string|false {
+            $string = match($name) {
+                'email' => 'E-mail',
+                'login' => 'Логин',
+                'name' => 'Имя',
+                'password1' => 'Пароль',
+                'password2' => 'Повтор',
+                default => false
+            };
+            return $string;
+        }
+
+        public function getRegex(string $name): Regex|false {
+            $regex = match($name) {
                 'email' => Regex::email,
                 'login' => Regex::login,
                 'name' => Regex::name,
@@ -232,29 +244,26 @@
             return $regex;
         }
 
-
-
-        private function getPassword(string $password1, string $password2): string|false {
-            $clear_password = $this->comparePasswords($password1, $password2);
-            if($clear_password) {
-                $password = $this->encryptPassword($clear_password);
-                return $password;
+        public function getPassword(): string|false {
+            $password = $this->comparePasswords($_POST['password1'], $_POST['password2']);
+            if($password) {
+                $hashed_password = $this->encryptPassword($password);
+                return $hashed_password;
             }
             else 
                 return false;
         }
 
-        private function comparePasswords(string $password1 = '', string $password2 = ''): string|false {
-            if($password1 && $password2) 
-                if($password1 === $password2) 
-                    return $password1;
-                else 
-                    return false;
-            else 
+        public function comparePasswords(string $password1, string $password2): string|false {
+            if($password1 === $password2) 
+                return $password1;
+            else {
+                $this->error_message .= urlencode("Внимание! Пароли не совпадают!\n");
                 return false;
+            }
         }
 
-        private function encryptPassword(string $password): string {
+        public function encryptPassword(string $password): string {
             $password = password_hash($password, PASSWORD_DEFAULT);
             return $password;
         }
