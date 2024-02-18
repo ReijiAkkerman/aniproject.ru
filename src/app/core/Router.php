@@ -1,10 +1,6 @@
 <?php
     namespace project\core;
 
-    spl_autoload_register(function() {
-        require __DIR__ . "/../control/" . Router::$file . ".php";
-    });
-
     final class Router {
         public static string $file;
         public static string $controller;

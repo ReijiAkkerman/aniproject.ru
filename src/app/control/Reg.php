@@ -30,15 +30,18 @@
             $fieldsAreGood = $this->getFieldValues();
             if($fieldsAreGood) {
                 $newUser = $this->isNewUser();
-                if($newUser)
+                if($newUser) {
                     $this->registrate();
+                    header("Location: ../calendar/view");
+                    exit;
+                }
                 else {
-                    header("Location: ../error/view?{$this->error_message}");
+                    header("Location: ../error/view?error_message={$this->error_message}");
                     exit;
                 }
             }
             else {
-                header("Location: ../error/view?{$this->error_message}");
+                header("Location: ../error/view?error_message={$this->error_message}");
                 exit;
             }
         }
@@ -52,10 +55,10 @@
                 $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
             }
             catch(\mysqli_sql_exception $exception) {
-                $this->init($server, '%');
+                $this->init($server, $connect_from);
                 return true;
             }
-            $query = "SELECT email,login FROM users WHERE email='{$this->email}' && login='{$this->login}'";
+            $query = "SELECT email,login FROM users WHERE email='{$this->email}' || login='{$this->login}'";
             $result = $mysql->query($query);
             if($result->num_rows) {
                 if($result->num_rows > 1) {
