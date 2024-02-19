@@ -224,7 +224,7 @@
             }
         }
 
-        public function getFieldName(string $name = 'password2'): string|false {
+        public function getFieldName(string $name): string|false {
             $string = match($name) {
                 'email' => 'E-mail',
                 'login' => 'Логин',
