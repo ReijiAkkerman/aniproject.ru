@@ -1,119 +1,81 @@
 <?php
     namespace project\core;
 
-    final class Router {
-        public static string $file;
-        public static string $controller;
+    class Router {
+        public string $controller;
         public string $method;
         public array $args;
-        public bool $active_user;
+        public static string $folder;
 
         public function __construct() {
-            $this->parseRequest();
+            $this->args = [];
+            $this->getRequestElements();
         }
 
         public function action(): void {
-            try {
-                if($this->args)
-                    (new Router::$controller)->{$this->method}($this->args);
-                else
-                    (new Router::$controller)->{$this->method}();
+            if($this->args) {
+                (new $this->controller)->{$this->method}($this->args);
             }
-            catch(Throwable) {
-                header("Location: ../errors/view");
+            else {
+                (new $this->controller)->{$this->method}();
             }
         }
 
-        public function parseRequest(): void {
-            $request = explode('/', $_SERVER['REQUEST_URI']);
-            $controllerPart;
-            $methodPart;
-            $argsPart = [];
-
-            $this->defineUser();
-            $this->setArgs($request, $argsPart);
-            $this->setController($request, $controllerPart);
-            $this->setMethod($request, $methodPart);
-            $this->setProperties($controllerPart, $methodPart, $argsPart);
-            $this->setFile();
+        public function getRequestElements(): void {
+            $clearRequest = $this->getClearRequest($_SERVER['REQUEST_URI']);
+            $requestElements = explode('/', $clearRequest);
+            $this->controller = $this->getController($requestElements);
+            if($this->controller)
+                $this->method = $this->getMethod($requestElements);
+            if($this->method) 
+                $this->args = $this->getArgs($requestElements);
         }
 
+        /**
+         * Возвращает контероллер и устанавливает соответствующую ему папку
+         */
 
-
-
-
-        private function setFile(): void {
-            $filename_array = explode('\\', Router::$controller);
-            Router::$file = end($filename_array);
-        }
-
-        private function setController(array $request, &$controllerPart): void {  // определение контроллера
-            if(isset($request[1]))
-                if($request[1])
-                    $controllerPart = 'project\control\\' . ucfirst($request[1]);
-                else 
-                    $this->setHeader();
-            else 
-                $this->setHeader();
-        }
-
-        private function setMethod(array $request, &$methodPart): void {  // определение метода 
-            if(isset($request[2]))
-                if($request[2])
-                    $methodPart = $request[2];
-                else 
-                    $this->setHeader();
-            else 
-                $this->setHeader();
-        }
-
-        private function setArgs(array &$request, &$argsPart): void {  // определение аргументов 
-            if($_SERVER['REQUEST_METHOD'] == 'GET') {
-                if($_GET) {
-                    $counter = 0;
-                    foreach($request as $key => $value) {
-                        if(str_contains($value, '?')) {
-                            $clearArg = explode('?', $request[$counter])[0];
-                            $request[$counter] = $clearArg;
-                            break;
-                        }
-                        else 
-                            $counter++;
-                    }
-                    goto collectArgs;
-                }
-                else goto collectArgs;
-            }
-            else goto collectArgs;
-            collectArgs:
-                for($i = 3; $i < sizeof($request); $i++) 
-                    $argsPart[] = $request[$i];
-        }
-
-        private function setProperties(         // инициализация свойств
-                string &$controllerPart = '', 
-                string &$methodPart = '', 
-                array &$argsPart = []
-            ): void {
-
-            Router::$controller = $controllerPart;
-            $this->method = $methodPart;
-            $this->args = $argsPart;
-        }
-
-        private function setHeader(): void {
-            if($this->active_user) {
-                header("Location: ../calendar/view");
+        public function getController(array $requestElements): string|false {
+            $controllerPart = ucfirst($requestElements[1]);
+            $fileExists = file_exists(__DIR__ . "/../control/{$controllerPart}.php");
+            if($fileExists) {
+                $controller = "project\\control\\" . $controllerPart;
+                Router::$folder = $requestElements[1];
+                return $controller;
             }
             else 
-                header("Location: ../log/view");
+                return false;
         }
 
-        private function defineUser(): void {
-            if(false) {
-                
+        public function getMethod(array $requestElements): string|false {
+            $method = $requestElements[2];
+            $method_exists = method_exists($this->controller, $method);
+            if($method_exists) 
+                return $method;
+            else 
+                return false;
+        }
+
+        public function getArgs(array $requestElements): array {
+            $args = [];
+            for($i = 3; $i < sizeof($requestElements); $i++)
+                $args[] = $requestElements[$i];
+            return $args;
+        }
+
+        /**
+         * Возвращает false если строка не содержит знака вопроса '?'
+         * в противном случае строку без изменений
+         */
+
+        public function getClearRequest(string $request): string {
+            $containsQuestionMark = str_contains($request, '?');
+            if($containsQuestionMark) {
+                $temp_array = explode('?', $request);
+                $string = $temp_array[0];
+                return $string;
             }
             else 
-                $this->active_user = false;
+                return $request;
         }
     }
