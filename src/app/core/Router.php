@@ -37,6 +37,10 @@
 
         public function getController(array $requestElements): string|false {
             $controllerPart = ucfirst($requestElements[1]);
+            if(!$controllerPart) {
+                header("Location: ../calendar/view");
+                exit;
+            }
             $fileExists = file_exists(__DIR__ . "/../control/{$controllerPart}.php");
             if($fileExists) {
                 $controller = "project\\control\\" . $controllerPart;
@@ -48,6 +52,10 @@
         }
 
         public function getMethod(array $requestElements): string|false {
+            if(!isset($requestElements[2])) {
+                header("Location: ../" . Router::$folder . "/view");
+                exit;
+            }
             $method = $requestElements[2];
             $method_exists = method_exists($this->controller, $method);
             if($method_exists) 
