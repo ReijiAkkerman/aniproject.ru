@@ -1,26 +1,19 @@
 <?php
-    abstract class A {
-        public $public;
-        protected $protected;
+    class A {
+        public $a;
+        public $b;
 
         public function __construct() {
-            $this->public = 'public';
-            $this->protected = 'protected';
+            $this->a = 'hello';
         }
 
-        
-    }
-
-    class B extends A {
-        public function printPublic(): void {
-            echo $this->public . "\n";
-        }
-
-        public function printProtected(): void {
-            echo $this->protected . "\n";
+        public function hello() {
+            if($this->b)
+                echo 'good';
+            else 
+                echo 'BAD';
         }
     }
 
-    $obj = new B();
-    $obj->printPublic();
-    $obj->printProtected();
+    $obj = new A();
+    $obj->hello();

@@ -1,10 +1,10 @@
 <?php
     namespace project\control;
 
-    require_once __DIR__ . '/abstract/Page.php';
-    require_once __DIR__ . '/traits/ViewPage.php';
-
     use project\control\enum\Regex;
+    use project\control\parent\Page;
+    use project\control\traits\ViewPage;
+    use project\control\traits\Access;
 
     class Log extends Page {
         public string $login;
@@ -14,8 +14,10 @@
         public string $error_message;
 
         use ViewPage;
+        use Access;
 
         public function __construct() {
+            $this->constructor();
             $this->fields = [
                 'login',
                 'password'
@@ -63,10 +65,10 @@
 
 
         public function sendCookie(string $server = 'localhost'): void {
-            $userID = $this->getUserID($this->login, $this->loginType, $server);
-            $cookieActivity = 3600 * 24 * 30;
-            $cookieValue = sha1('' . $userID . time());
-            setcookie('ID', $cookieValue, time() + $cookieActivity, '/');
+            $this->userID = $this->getUserID($this->login, $this->loginType, $server);
+            $this->getAccessToken();
+            setcookie('ID', $this->userID, time() + $this->activityTime, '/');
+            setcookie('token', $this->accessToken, time() + $this->activityTime, '/');
         }
 
         public function comparePassword(

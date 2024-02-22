@@ -35,7 +35,7 @@
          * Возвращает контероллер и устанавливает соответствующую ему папку
          */
 
-        public function getController(array $requestElements): string|false {
+        public function getController(array $requestElements): string {
             $controllerPart = ucfirst($requestElements[1]);
             if(!$controllerPart) {
                 header("Location: ../calendar/view");
@@ -47,8 +47,10 @@
                 Router::$folder = $requestElements[1];
                 return $controller;
             }
-            else 
-                return false;
+            else {
+                header("Location: ../calendar/view");
+                exit;
+            }
         }
 
         public function getMethod(array $requestElements): string|false {

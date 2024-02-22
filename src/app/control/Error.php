@@ -1,8 +1,8 @@
 <?php
     namespace project\control;
 
-    require_once __DIR__ . "/abstract/Page.php";
-    require_once __DIR__ . "/traits/ViewPage.php";
+    use project\control\parent\Page;
+    use project\control\traits\ViewPage;
 
     class Error extends Page {
         use ViewPage;

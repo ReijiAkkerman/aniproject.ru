@@ -1,5 +1,5 @@
 <?php
-    namespace project\control;
+    namespace project\control\traits;
 
     trait ViewPage {
         public function view(): void {

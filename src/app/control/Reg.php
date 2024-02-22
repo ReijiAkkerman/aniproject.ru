@@ -1,11 +1,10 @@
 <?php
     namespace project\control;
 
-    require_once __DIR__ . "/abstract/Page.php";
-
-    require_once __DIR__ . "/traits/ViewPage.php";
-
     use project\control\enum\Regex;
+    use project\control\parent\Page;
+    use project\control\traits\ViewPage;
+    use project\control\traits\Access;
 
     class Reg extends Page {
         public array $fields;
@@ -18,6 +17,7 @@
         public string $error_message;
 
         public function __construct() {
+            $this->constructor();
             $this->error_message = '';
         }
 
@@ -26,6 +26,7 @@
 
 
         use ViewPage;
+        use Access;
 
         public function registrateUser(): void {
             $fieldsAreGood = $this->getFieldValues();
@@ -55,9 +56,8 @@
 
         public function sendCookie(): void {
             $userID = $this->getUserID();
-            $activityTime = 3600 * 24 * 30;
-            setcookie('ID', $userID, time() + $activityTime, '/');
-            setcookie('token', $this->accessToken, time() + $activityTime, '/');
+            setcookie('ID', $userID, time() + $this->activityTime, '/');
+            setcookie('token', $this->accessToken, time() + $this->activityTime, '/');
         }
         
         private function isNewUser(string $server = 'localhost', string $connect_from = 'localhost'): bool {
@@ -179,7 +179,7 @@
             $mysql->close();
         }
 
-        public function getUserID(string $server = 'localhost'): string {
+        public function getUserID(string $server = 'localhost'): int {
             $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
             $query = "SELECT ID FROM users WHERE login='{$this->login}'";
             $result = $mysql->query($query);
@@ -193,9 +193,7 @@
 
 
 
-        public function createAccessToken(): void {
-            $this->accessToken = sha1('' . $this->login . time());
-        }
+
 
         public function getFieldValues(): bool {
             $this->fields = [

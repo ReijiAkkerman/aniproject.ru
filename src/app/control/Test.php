@@ -1,8 +1,8 @@
 <?php
     namespace project\control;
 
-    require_once __DIR__ . "/abstract/Pege.php";
-    require_once __DIR__ . "/traits/ViewPage.php";
+    use project\control\parent\Page;
+    use project\control\traits\ViewPage;
 
     class Test extends Page {
         use ViewPage;
