@@ -13,6 +13,7 @@
         public string $login;
         public string $name;
         public string $password;
+        public string $accessToken;
         public bool $async;
         public string $error_message;
 
@@ -31,7 +32,9 @@
             if($fieldsAreGood) {
                 $newUser = $this->isNewUser();
                 if($newUser) {
+                    $this->createAccessToken();
                     $this->registrate();
+                    $this->sendCookie();
                     header("Location: ../calendar/view");
                     exit;
                 }
@@ -49,6 +52,13 @@
 
 
 
+
+        public function sendCookie(): void {
+            $userID = $this->getUserID();
+            $activityTime = 3600 * 24 * 30;
+            setcookie('ID', $userID, time() + $activityTime, '/');
+            setcookie('token', $this->accessToken, time() + $activityTime, '/');
+        }
         
         private function isNewUser(string $server = 'localhost', string $connect_from = 'localhost'): bool {
             try {
@@ -89,7 +99,8 @@
                 password,
                 registration_time,
                 last_enter_time,
-                groups_users
+                groups_users,
+                access_token
             ) VALUES (
                 '{$this->email}',
                 '{$this->login}',
@@ -97,7 +108,8 @@
                 '{$this->password}',
                 $reg_time,
                 $reg_time,
-                'none'
+                null,
+                '{$this->accessToken}'
             )";
             $mysql->query($query);
             $mysql->close();
@@ -158,12 +170,31 @@
                 password VARCHAR(255),
                 registration_time INT,
                 last_enter_time INT, 
-                groups_users TEXT
+                groups_users TEXT,
+                access_token VARCHAR(255)
             )";
             $mysql->query($query);
             $query = "REVOKE CREATE, DROP ON Users.* FROM 'Users'@'$connect_from'";
             $mysql->query($query);
             $mysql->close();
+        }
+
+        public function getUserID(string $server = 'localhost'): string {
+            $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
+            $query = "SELECT ID FROM users WHERE login='{$this->login}'";
+            $result = $mysql->query($query);
+            if($result->num_rows)
+                foreach($result as $row) {
+                    return $row['ID'];
+                }
+            else 
+                return false;
+        }
+
+
+
+        public function createAccessToken(): void {
+            $this->accessToken = sha1('' . $this->login . time());
         }
 
         public function getFieldValues(): bool {

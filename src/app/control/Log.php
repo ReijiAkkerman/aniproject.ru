@@ -63,10 +63,10 @@
 
 
         public function sendCookie(string $server = 'localhost'): void {
-            $userID = $this->getUserID($this->login, $this->loginType);
+            $userID = $this->getUserID($this->login, $this->loginType, $server);
             $cookieActivity = 3600 * 24 * 30;
             $cookieValue = sha1('' . $userID . time());
-            setcookie('ID', $cookieValue, $cookieActivity, '/');
+            setcookie('ID', $cookieValue, time() + $cookieActivity, '/');
         }
 
         public function comparePassword(
