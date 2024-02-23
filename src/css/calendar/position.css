@@ -8,7 +8,7 @@
   grid-template-columns: repeat(7, 1fr);
 }
 .calendar > .NewEntry {
-  display: flex;
+  display: none;
   position: fixed;
   justify-content: center;
   align-items: center;

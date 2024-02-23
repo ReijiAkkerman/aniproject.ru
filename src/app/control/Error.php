@@ -5,5 +5,9 @@
     use project\control\traits\ViewPage;
 
     class Error extends Page {
+        public function __construct() {
+            $this->constructor();
+        }
+
         use ViewPage;
     }

@@ -1,3 +1,6 @@
+<?php 
+    use project\view\Calendar;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,16 +9,34 @@
     <body class="calendar">
     <?php include_once __DIR__ . "/components/common/header.php" ?>
         <main class="Calendar">
-        <?php for($i = 0; $i < 63;$i++) { ?>
-            <div class="Day <?php if($i % 7 == 0) echo "start" ?>">
+        <?php
+            $calendar = new Calendar();
+            $calendar->getDefaultDates();
+            $month = $calendar->start->format('n');
+            $year = $calendar->start->format('o');
+            foreach($calendar->period as $day) {
+        ?>
+            <div class="Day <?php if($day->format('w') == 0) echo "start" ?>">
                 <div class="Header">
-                    <button>01/01</button>
+                    <button>
+                    <?php
+                        echo $day->format('d');
+                        if($month != $day->format('n'))
+                            echo '/' . $day->format('n');
+                        if($year != $day->format('o'))
+                            echo '/' . $day->format('o');
+                    ?>
+                    </button>
                 </div>
                 <div class="Body">
 
                 </div>
             </div>
-        <?php } ?>
+        <?php
+        $month = $day->format('n');
+        $year = $day->format('o');
+        } 
+        ?>
         </main>
         <section class="NewEntry">
             <form action="#" method="POST">

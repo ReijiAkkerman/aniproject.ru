@@ -1,4 +1,6 @@
 <?php
+    namespace project\view;
+
     class Calendar {
         public \DateTime $start;
         public \DateTimeImmutable $now;
@@ -35,10 +37,4 @@
             $deltaDaysInterval = new \DateInterval("P{$deltaDays}D");
             $this->end->add($deltaDaysInterval);
         }
-    }
-
-    $obj = new Calendar();
-    $obj->getDefaultDates();
-    foreach($obj->period as $day) {
-        echo $day->format('d.m.o l') . "\n";
     }
