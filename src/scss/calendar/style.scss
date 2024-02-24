@@ -16,12 +16,19 @@
 
                 > button {
                     width: 100%;
-                    font-weight: bold;
                     text-align: center;
                     background-color: #eee;
 
                     &:hover {
                         background-color: #ccc;
+
+                        > span {
+                            color: c.$text-color;
+                        }
+                    }
+
+                    > span {
+                        color: #cccccc;
                     }
                 }
             }

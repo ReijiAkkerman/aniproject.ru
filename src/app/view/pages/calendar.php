@@ -22,7 +22,9 @@
                     <?php
                         echo $day->format('d');
                         if($month != $day->format('n'))
-                            echo '/' . $day->format('n');
+                            echo "/$month";
+                        else 
+                            echo "<span>/{$month}</span>";
                         if($year != $day->format('o'))
                             echo '/' . $day->format('o');
                     ?>

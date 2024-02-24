@@ -12,12 +12,17 @@
 }
 .calendar > .Calendar > .Day > .Header > button {
   width: 100%;
-  font-weight: bold;
   text-align: center;
   background-color: #eee;
 }
 .calendar > .Calendar > .Day > .Header > button:hover {
   background-color: #ccc;
+}
+.calendar > .Calendar > .Day > .Header > button:hover > span {
+  color: #000;
+}
+.calendar > .Calendar > .Day > .Header > button > span {
+  color: #cccccc;
 }
 .calendar > .NewEntry {
   top: 0;
