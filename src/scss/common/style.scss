@@ -1,13 +1,18 @@
 @use '../st' as c;
 
 header.common {
+    top: 0;
     @include c.border(bottom);
-
+    height: 70px;
+    box-sizing: border-box;
+    background-color: c.$main-background;
 
     > .Header {
         margin: 0 auto;
         max-width: 1700px;
+        height: 100%;
         padding: 10px;
+        box-sizing: border-box;
 
         .Actions {
             gap: 20px;
@@ -28,6 +33,7 @@ header.common {
             .Search {
                 margin: auto 10px auto 0;
                 padding: 2px 10px;
+                height: 25px;
                 @include c.border(none);
                 border-radius: 15px;
 
@@ -36,10 +42,15 @@ header.common {
                     padding-left: 5px;
                 }
 
-                ~ button > svg {
-                    width: 25px;
-                    height: 25px;
-                    padding: 10px;
+                > button {
+                    // box-sizing: border-box;
+                    height: 23px;
+                    margin: auto;
+                    padding-left: 10px;
+                    @include c.border(left);
+                }
+
+                ~ button {
                     @include c.border(bottom, c.$transparent-border-color);
 
                     &:hover {
@@ -47,12 +58,16 @@ header.common {
                     }
                 }
 
+                ~ button > svg {
+                    width: 25px;
+                    height: 25px;
+                    padding: 0 10px;
+                }
+
                 svg {
-                    width: 20px;
-                    height: 20px;
-                    padding-left: 10px;
-                    @include c.border(left);
-                    @include c.border(bottom, c.$transparent-border-color);
+                    width: 100%;
+                    height: 100%;
+                    vertical-align: top;
                 }
             }
         }
@@ -67,14 +82,21 @@ header.common {
         }
 
         > .Links {
+            box-sizing: border-box;
+            width: 60px;
             padding-left: 10px;
             @include c.border(left);
 
             svg {
-                width: 35px;
-                height: 35px;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
                 padding: 5px;
                 fill: #555;
+            }
+
+            > button {
+                box-sizing: border-box;
                 @include c.border(bottom, c.$transparent-border-color);
 
                 &:hover {

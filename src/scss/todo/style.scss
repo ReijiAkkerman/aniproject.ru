@@ -1,0 +1,50 @@
+@use '../st' as c;
+
+.todo {
+    > .Subsection {
+        box-sizing: border-box;
+        top: 70px;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        @include c.border(right);
+    }
+
+    > .Info {
+        margin-left: 250px;
+        margin-right: 70px;
+
+        > .Entry {
+            margin: 20px;
+            @include c.border('none');
+        }
+    }
+
+    > .Section {
+        box-sizing: border-box;
+        top: 70px;
+        right: 0;
+        width: 70px;
+        height: 100%;
+
+        > .Cathegories {
+            box-sizing: border-box;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 0 10px 10px 10px;
+            height: 100%;
+            @include c.border(left);
+            @include c.border(bottom);
+
+            > button {
+                box-sizing: border-box;
+                padding: 10px 5px;
+                @include c.border(bottom, c.$transparent-border-color);
+
+                &:hover {
+                    border-color: c.$border-color;
+                }
+            }
+        }
+    }
+}

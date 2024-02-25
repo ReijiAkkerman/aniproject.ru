@@ -1,0 +1,24 @@
+.todo > .Subsection {
+  display: block;
+  position: fixed;
+}
+.todo > .Info {
+  display: block;
+  position: relative;
+}
+.todo > .Info > .Entry {
+  display: block;
+  position: relative;
+}
+.todo > .Section {
+  display: block;
+  position: fixed;
+}
+.todo > .Section > div {
+  display: flex;
+  position: relative;
+  justify-content: start;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=position.css.map */

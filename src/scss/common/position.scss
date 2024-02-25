@@ -1,7 +1,9 @@
 @use '../pos' as c;
 
 header.common {
-    @include c.display;
+    display: block;
+    position: sticky;
+    z-index: 10;
 
     > .Header {
         @include c.flex(space-between);

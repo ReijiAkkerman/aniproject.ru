@@ -1,6 +1,7 @@
 header.common {
   display: block;
-  position: relative;
+  position: sticky;
+  z-index: 10;
 }
 header.common > .Header {
   display: flex;

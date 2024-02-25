@@ -1,0 +1,25 @@
+@use '../pos' as c;
+
+.todo {
+    > .Subsection {
+        display: block;
+        position: fixed;
+    }
+
+    > .Info {
+        @include c.display;
+
+        > .Entry {
+            @include c.display;
+        }
+    }
+
+    > .Section {
+        display: block;
+        position: fixed;
+
+        > div {
+            @include c.flex(start, null, column);
+        }
+    }
+}

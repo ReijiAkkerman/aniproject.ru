@@ -1,0 +1,42 @@
+.todo > .Subsection {
+  box-sizing: border-box;
+  top: 70px;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  border-right: 1px solid #000;
+}
+.todo > .Info {
+  margin-left: 250px;
+  margin-right: 70px;
+}
+.todo > .Info > .Entry {
+  margin: 20px;
+  border: 1px solid #000;
+}
+.todo > .Section {
+  box-sizing: border-box;
+  top: 70px;
+  right: 0;
+  width: 70px;
+  height: 100%;
+}
+.todo > .Section > .Cathegories {
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0 10px 10px 10px;
+  height: 100%;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.todo > .Section > .Cathegories > button {
+  box-sizing: border-box;
+  padding: 10px 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+.todo > .Section > .Cathegories > button:hover {
+  border-color: #000;
+}
+
+/*# sourceMappingURL=style.css.map */
