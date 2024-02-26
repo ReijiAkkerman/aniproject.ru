@@ -9,6 +9,36 @@
     > .Info {
         @include c.display;
 
+        > .Sorting {
+            @include c.display;
+
+            > div {
+                @include c.flex(space-between);
+
+                > div {
+                    @include c.flex(end);
+
+                    > div:last-of-type {
+                        @include c.flex(end);
+                    }
+                }
+            }
+
+            input[type="checkbox"] {
+                display: none;
+            }
+
+            label {
+                display: inline-block;
+                position: relative;
+
+                &:before {
+                    display: inline-block;
+                    position: absolute;
+                }
+            }
+        }
+
         > .Entry {
             @include c.display;
 

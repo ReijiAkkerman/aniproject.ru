@@ -38,6 +38,29 @@
             </div>
         </section>
         <main class="Info">
+            <div class="Sorting">
+                <div class="Cathegory">
+                    <p>Категория:</p>
+                    <div class="cases">
+                        <div>
+                            <input type="checkbox" id="begin">
+                            <label for="begin">Сначала</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="only_titles">
+                            <label for="only_titles">Только заголовки</label>
+                        </div>
+                        <div class="list">
+                            <p>По алфавиту</p>
+                            <button>
+                                <svg viewBox="0 0 1024 1024">
+                                <path d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php for($i = 0; $i < 8; $i++) { ?>
             <div class="Entry">
                 <div>

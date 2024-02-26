@@ -6,6 +6,36 @@
   display: block;
   position: relative;
 }
+.todo > .Info > .Sorting {
+  display: block;
+  position: relative;
+}
+.todo > .Info > .Sorting > div {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.todo > .Info > .Sorting > div > div {
+  display: flex;
+  position: relative;
+  justify-content: end;
+}
+.todo > .Info > .Sorting > div > div > div:last-of-type {
+  display: flex;
+  position: relative;
+  justify-content: end;
+}
+.todo > .Info > .Sorting input[type=checkbox] {
+  display: none;
+}
+.todo > .Info > .Sorting label {
+  display: inline-block;
+  position: relative;
+}
+.todo > .Info > .Sorting label:before {
+  display: inline-block;
+  position: absolute;
+}
 .todo > .Info > .Entry {
   display: block;
   position: relative;

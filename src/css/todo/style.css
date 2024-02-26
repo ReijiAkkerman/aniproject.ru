@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .todo > .Subsection {
   box-sizing: border-box;
   top: 70px;
@@ -32,6 +33,46 @@
 .todo > .Info {
   margin-left: 250px;
   margin-right: 70px;
+}
+.todo > .Info > .Sorting {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #000;
+}
+.todo > .Info > .Sorting > div > div {
+  gap: 20px;
+}
+.todo > .Info > .Sorting > div > div > div:last-of-type {
+  border: 1px solid #000;
+}
+.todo > .Info > .Sorting > div > div > div:last-of-type > p {
+  padding: 0 5px;
+}
+.todo > .Info > .Sorting > div > div > div:last-of-type > button {
+  border-left: 1px solid #000;
+}
+.todo > .Info > .Sorting > div > div > div:last-of-type > button > svg {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.todo > .Info > .Sorting label {
+  padding-left: 30px;
+}
+.todo > .Info > .Sorting label:before {
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+}
+.todo > .Info > .Sorting input[type=checkbox]:checked + label:before {
+  content: "✓";
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
 }
 .todo > .Info > .Entry {
   margin: 20px;

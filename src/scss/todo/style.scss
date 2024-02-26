@@ -44,6 +44,57 @@
         margin-left: 250px;
         margin-right: 70px;
 
+        > .Sorting {
+            margin: 0 10px;
+            padding: 5px 10px;
+            @include c.border(bottom);
+
+            > div {
+                > div {
+                    gap: 20px;
+
+                    > div:last-of-type {
+                        @include c.border(none);
+
+                        > p {
+                            padding: 0 5px;
+                        }
+
+                        > button {
+                            @include c.border(left);
+
+                            > svg {
+                                vertical-align: middle;
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            label {
+                padding-left: 30px;
+
+                &:before {
+                    content: "";
+                    bottom: 0;
+                    left: 0;
+                    width: 20px;
+                    height: 20px;
+                    @include c.border(none);
+                }
+            }
+
+            input[type="checkbox"]:checked + label:before {
+                content: "\2713";
+                font-size: 20px;
+                font-weight: bold;
+                color: c.$text-color;
+                text-align: center;
+            }
+        }
+
         > .Entry {
             margin: 20px;
             @include c.border(none);
