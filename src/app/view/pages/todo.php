@@ -38,34 +38,54 @@
             </div>
         </section>
         <main class="Info">
+        <?php for($i = 0; $i < 8; $i++) { ?>
             <div class="Entry">
                 <div>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="Подзадача 2">
                 </div>
                 <div>
                     <div>
-                        <textarea name="description" id="" cols="30" rows="10"></textarea>
-                        <div class="materials">
-                            <a href="#">Какая-то ссылка</a>
+                        <div>
+                            <textarea name="description"></textarea>
                         </div>
-                        <div class="child_tasks">
-                            <ul>
-                                <li>Подзадача 1</li>
-                                <li>Подзадача 2</li>
-                            </ul>
+                        <div>
+                            <div class="materials">
+                                <a href="#">https://aniproject.ru/calendar/view</a>
+                            </div>
+                            <div class="child_tasks">
+                                <ul>
+                                    <li>Подзадача подзадачи 1</li>
+                                    <li>Подзадача подзадачи 2</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div>
-                        <input type="text" name="cathegory">
-                        <input type="text" name="time_end">
-                        <p class="left_time">1:14:30:00</p>
-                        <input type="text" name="users">
-                        <input type="text" name="parent_task">
-                        <input type="text" name="time_start">
-                        <p class="time_creation">12-8-2024 15:28:33</p>
+                        <div>
+                            <input type="text" name="cathegory" value="Категория 1">
+                        </div>
+                        <div>
+                            <input type="text" name="time_end" value="14-8-2024 19:28:33">
+                        </div>
+                        <div>
+                            <p class="left_time">2:04:00:00</p>
+                        </div>
+                        <div>
+                            <p class="users">Пользователь 1<br>Пользователь 2</p>
+                        </div>
+                        <div>
+                            <input type="text" name="parent_task" value="Задача 1">
+                        </div>
+                        <div>
+                            <input type="text" name="time_start" value="12-8-2024 15:28:33">
+                        </div>
+                        <div>
+                            <p class="time_creation">12-8-2024 15:28:33</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        <?php } ?>
         </main>
         <section class="Section">
             <div class="Cathegories">

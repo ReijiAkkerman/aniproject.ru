@@ -11,6 +11,18 @@
 
         > .Entry {
             @include c.display;
+
+            > div:last-of-type {
+                @include c.flex(space-between);
+
+                > div {
+                    @include c.flex(space-between, null, column);
+
+                    > div:first-of-type {
+                        height: 100%;
+                    }
+                }
+            }
         }
     }
 
