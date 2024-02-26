@@ -7,18 +7,34 @@
     <?php include_once __DIR__ . "/components/common/header.php" ?>
         <section class="Subsection">
             <div class="Type">
-                <pre>Категория 1</pre>
+                <button>
+                    <pre>Категория 1</pre>
+                </button>
                 <div class="Subtype">
-                    <pre>Задача 1</pre>
+                    <button>
+                        <pre>Задача 1</pre>
+                    </button>
                     <div class="Subtype">
-                        <pre>Подзадача 1</pre>
-                        <pre>Подзадача 2</pre>
+                        <button>
+                            <pre>Подзадача 1</pre>
+                        </button>
+                        <button>
+                            <pre>Подзадача 2</pre>
+                        </button>
                     </div>
-                    <pre>Задача 2</pre>
-                    <pre>Задача 3</pre>
+                    <button>
+                        <pre>Задача 2</pre>
+                    </button>
+                    <button>
+                        <pre>Задача 3</pre>
+                    </button>
                 </div>
-                <pre>Категория 2</pre>
-                <pre>Категория 3</pre>
+                <button>
+                    <pre>Категория 2</pre>
+                </button>
+                <button>
+                    <pre>Категория 3</pre>
+                </button>
             </div>
         </section>
         <main class="Info">

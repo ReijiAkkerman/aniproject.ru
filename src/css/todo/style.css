@@ -6,6 +6,29 @@
   height: 100%;
   border-right: 1px solid #000;
 }
+.todo > .Subsection > .Type > button {
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #aaa;
+}
+.todo > .Subsection .Subtype {
+  margin-left: 5px;
+  border-left: 1px solid #000;
+}
+.todo > .Subsection button {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 5px;
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+.todo > .Subsection button:hover {
+  border-color: #aaa;
+  background-color: #eee;
+}
+.todo > .Subsection button > pre {
+  text-align: start;
+}
 .todo > .Info {
   margin-left: 250px;
   margin-right: 70px;
@@ -19,7 +42,6 @@
   top: 70px;
   right: 0;
   width: 70px;
-  height: 100%;
 }
 .todo > .Section > .Cathegories {
   box-sizing: border-box;
