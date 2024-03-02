@@ -13,6 +13,7 @@
         position: fixed;
         justify-content: center;
         align-items: center;
+        z-index: 11;
 
         input[type="checkbox"] {
             display: none;
@@ -26,6 +27,10 @@
                 display: inline-block;
                 position: absolute;
             }
+        }
+
+        .set_time {
+            display: none;
         }
 
         > form {
@@ -61,18 +66,18 @@
                 > .Supplement {
                     @include c.display;
 
-                    > .Week {
+                    .SetTime {
                         @include c.display;
+                        display: none;
+                    }
+
+                    > .Week {
+                        @include c.flex(space-around);
                         display: none;
 
                         > div {
-                            @include c.flex(space-around);
+                            @include c.display;
                         }
-                    }
-
-                    > .SetTime {
-                        @include c.flex(space-around);
-                        display: none;
                     }
 
                     > .Interval {
@@ -86,11 +91,28 @@
                 @include c.flex(space-between, null, column);
 
                 > div {
+                    @include c.flex(start, null, column);
+
                     > .list {
                         @include c.flex(space-between);
                     }
                 }
             }
+        }
+    }
+
+    > .RepeatUpTo {
+        // display: block;
+        display: none;
+        position: fixed;
+        z-index: 20;
+
+        > .Date {
+            @include c.flex(space-around);
+        }
+
+        > .Calendar {
+            @include c.grid(repeat(7, 1fr));
         }
     }
 }

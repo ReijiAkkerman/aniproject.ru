@@ -33,6 +33,18 @@
                 }
             }
         }
+
+        #now {
+            > .Header {
+                > button {
+                    background-color: #797;
+
+                    > span {
+                        color: c.$text-color;
+                    }
+                }
+            }
+        }
     }
 
     > .NewEntry {
@@ -45,6 +57,11 @@
         .bold {
             font-size: 22px;
             font-weight: bold;
+        }
+
+        button.bold {
+            width: fit-content;
+            margin: 0 auto;
         }
 
         label {
@@ -97,6 +114,8 @@
                     @include c.border(top);
                     @include c.border(bottom);
                     width: 100%;
+                    height: 200px;
+                    resize: none;
                 }
 
                 > .Date {
@@ -125,9 +144,8 @@
                 }
 
                 > .Repeat {
-                    padding: 10px 0;
+                    padding: 10px 0 0 0;
                     @include c.border(top);
-                    @include c.border(bottom);
                     margin-top: 10px;
                     
                     > p {
@@ -140,6 +158,16 @@
                         font-size: 22px;
                         width: 70px;
                     }
+
+                    > div {
+                        margin-top: 10px;
+                        padding-top: 10px;
+                        @include c.border(top);
+                    }
+
+                    > .Week {
+                        gap: 10px;
+                    }
                 }
             }
 
@@ -148,11 +176,23 @@
                     width: 100%;
                     height: 100%;
                     padding: 10px 0;
+                    gap: 10px;
+
+                    > input {
+                        box-sizing: border-box;
+                        padding-left: 5px;
+                        width: 200px;
+                        @include c.border(top);
+                        @include c.border(bottom);
+
+                        &::placeholder {
+                            font-size: 18px;
+                        }
+                    }
 
                     > .list {
                         min-width: 200px;
                         @include c.border(none);
-                        margin: 10px 0;
 
                         svg {
                             width: 20px;
@@ -170,6 +210,81 @@
 
                 > div:first-of-type {
                     @include c.border(bottom);
+                }
+
+                > div:last-of-type {
+                    width: 100%;
+                    height: fit-content;
+
+                    > button {
+                        font-size: 23px;
+                        width: fit-content;
+                        padding: 5px 15px;
+                        margin: auto;
+                        @include c.border(left);
+                        @include c.border(right);
+
+                        &:hover {
+                            background-color: #ccc;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    > .RepeatUpTo {
+        background-color: #fff;
+        @include c.border(left);
+        @include c.border(top);
+        bottom: 0;
+        right: 0;
+        width: fit-content;
+        height: fit-content;
+        text-align: center;
+        
+        > p:first-of-type {
+            font-weight: bold;
+            font-size: 23px;
+        }
+
+        > p:last-of-type {
+            font-size: 18px;
+        }
+
+        > .Date {
+            input[name] {
+                width: 70px;
+                text-align: center;
+                @include c.border(top);
+                @include c.border(bottom);
+            }
+        }
+
+        > .Calendar {
+            width: 300px;
+            height: 350px;
+            @include c.border(top);
+            margin-top: 10px;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+
+            > button {
+                > div {
+                    box-sizing: border-box;
+                    height: 65px;
+                    @include c.border(bottom);
+                    @include c.border(right);
+
+                    &:hover {
+                        background-color: #ccc;
+                    }
+
+                    > p {
+                        font-size: 10px;
+                    }
                 }
             }
         }

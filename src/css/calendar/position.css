@@ -12,6 +12,7 @@
   position: fixed;
   justify-content: center;
   align-items: center;
+  z-index: 11;
 }
 .calendar > .NewEntry input[type=checkbox] {
   display: none;
@@ -23,6 +24,9 @@
 .calendar > .NewEntry label:before {
   display: inline-block;
   position: absolute;
+}
+.calendar > .NewEntry .set_time {
+  display: none;
 }
 .calendar > .NewEntry > form {
   display: flex;
@@ -64,21 +68,20 @@
   display: block;
   position: relative;
 }
-.calendar > .NewEntry > form > .Main > .Supplement > .Week {
+.calendar > .NewEntry > form > .Main > .Supplement .SetTime {
   display: block;
   position: relative;
   display: none;
 }
-.calendar > .NewEntry > form > .Main > .Supplement > .Week > div {
-  display: flex;
-  position: relative;
-  justify-content: space-around;
-}
-.calendar > .NewEntry > form > .Main > .Supplement > .SetTime {
+.calendar > .NewEntry > form > .Main > .Supplement > .Week {
   display: flex;
   position: relative;
   justify-content: space-around;
   display: none;
+}
+.calendar > .NewEntry > form > .Main > .Supplement > .Week > div {
+  display: block;
+  position: relative;
 }
 .calendar > .NewEntry > form > .Main > .Supplement > .Interval {
   display: flex;
@@ -92,10 +95,31 @@
   justify-content: space-between;
   flex-direction: column;
 }
+.calendar > .NewEntry > form > .Adds > div {
+  display: flex;
+  position: relative;
+  justify-content: start;
+  flex-direction: column;
+}
 .calendar > .NewEntry > form > .Adds > div > .list {
   display: flex;
   position: relative;
   justify-content: space-between;
+}
+.calendar > .RepeatUpTo {
+  display: none;
+  position: fixed;
+  z-index: 20;
+}
+.calendar > .RepeatUpTo > .Date {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+.calendar > .RepeatUpTo > .Calendar {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 /*# sourceMappingURL=position.css.map */

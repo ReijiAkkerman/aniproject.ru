@@ -24,6 +24,12 @@
 .calendar > .Calendar > .Day > .Header > button > span {
   color: #bbb;
 }
+.calendar > .Calendar #now > .Header > button {
+  background-color: #797;
+}
+.calendar > .Calendar #now > .Header > button > span {
+  color: #000;
+}
 .calendar > .NewEntry {
   top: 0;
   left: 0;
@@ -34,6 +40,10 @@
 .calendar > .NewEntry .bold {
   font-size: 22px;
   font-weight: bold;
+}
+.calendar > .NewEntry button.bold {
+  width: fit-content;
+  margin: 0 auto;
 }
 .calendar > .NewEntry label {
   padding-left: 30px;
@@ -79,6 +89,8 @@
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   width: 100%;
+  height: 200px;
+  resize: none;
 }
 .calendar > .NewEntry > form > .Main > .Date {
   margin-top: 7px;
@@ -99,9 +111,8 @@
   gap: 20px;
 }
 .calendar > .NewEntry > form > .Main > .Repeat {
-  padding: 10px 0;
+  padding: 10px 0 0 0;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
   margin-top: 10px;
 }
 .calendar > .NewEntry > form > .Main > .Repeat > p {
@@ -111,15 +122,33 @@
   font-size: 22px;
   width: 70px;
 }
+.calendar > .NewEntry > form > .Main > .Supplement > div {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #000;
+}
+.calendar > .NewEntry > form > .Main > .Supplement > .Week {
+  gap: 10px;
+}
 .calendar > .NewEntry > form > .Adds > div {
   width: 100%;
   height: 100%;
   padding: 10px 0;
+  gap: 10px;
+}
+.calendar > .NewEntry > form > .Adds > div > input {
+  box-sizing: border-box;
+  padding-left: 5px;
+  width: 200px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.calendar > .NewEntry > form > .Adds > div > input::placeholder {
+  font-size: 18px;
 }
 .calendar > .NewEntry > form > .Adds > div > .list {
   min-width: 200px;
   border: 1px solid #000;
-  margin: 10px 0;
 }
 .calendar > .NewEntry > form > .Adds > div > .list svg {
   width: 20px;
@@ -133,6 +162,66 @@
 }
 .calendar > .NewEntry > form > .Adds > div:first-of-type {
   border-bottom: 1px solid #000;
+}
+.calendar > .NewEntry > form > .Adds > div:last-of-type {
+  width: 100%;
+  height: fit-content;
+}
+.calendar > .NewEntry > form > .Adds > div:last-of-type > button {
+  font-size: 23px;
+  width: fit-content;
+  padding: 5px 15px;
+  margin: auto;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+.calendar > .NewEntry > form > .Adds > div:last-of-type > button:hover {
+  background-color: #ccc;
+}
+.calendar > .RepeatUpTo {
+  background-color: #fff;
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  bottom: 0;
+  right: 0;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+}
+.calendar > .RepeatUpTo > p:first-of-type {
+  font-weight: bold;
+  font-size: 23px;
+}
+.calendar > .RepeatUpTo > p:last-of-type {
+  font-size: 18px;
+}
+.calendar > .RepeatUpTo > .Date input[name] {
+  width: 70px;
+  text-align: center;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.calendar > .RepeatUpTo > .Calendar {
+  width: 300px;
+  height: 350px;
+  border-top: 1px solid #000;
+  margin-top: 10px;
+  overflow-y: scroll;
+}
+.calendar > .RepeatUpTo > .Calendar::-webkit-scrollbar {
+  width: 0;
+}
+.calendar > .RepeatUpTo > .Calendar > button > div {
+  box-sizing: border-box;
+  height: 65px;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+}
+.calendar > .RepeatUpTo > .Calendar > button > div:hover {
+  background-color: #ccc;
+}
+.calendar > .RepeatUpTo > .Calendar > button > div > p {
+  font-size: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
