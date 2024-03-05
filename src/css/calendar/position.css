@@ -32,6 +32,7 @@
   display: flex;
   position: relative;
   justify-content: center;
+  z-index: 12;
 }
 .calendar > .NewEntry > form > .Main {
   display: block;
@@ -106,17 +107,17 @@
   position: relative;
   justify-content: space-between;
 }
-.calendar > .RepeatUpTo {
+.calendar > .NewEntry > .RepeatUpTo {
   display: none;
   position: fixed;
   z-index: 20;
 }
-.calendar > .RepeatUpTo > .Date {
+.calendar > .NewEntry > .RepeatUpTo > .Date {
   display: flex;
   position: relative;
   justify-content: space-around;
 }
-.calendar > .RepeatUpTo > .Calendar {
+.calendar > .NewEntry > .RepeatUpTo > .Calendar {
   display: grid;
   position: relative;
   grid-template-columns: repeat(7, 1fr);

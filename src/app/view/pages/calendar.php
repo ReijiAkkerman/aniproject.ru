@@ -258,34 +258,34 @@
                     </div>
                 </div>
             </form>
-        </section>
-        <section class="RepeatUpTo">
-            <p>Повторять по</p>
-            <p>Выбрать дату</p>
-            <div class="Date">
-                <div>
-                    <p>Год</p>
-                    <input type="text" name="year">
-                </div>
-                <div>
-                    <p>Месяц</p>
-                    <input type="text" name="month">
-                </div>
-                <div>
-                    <p>День</p>
-                    <input type="text" name="day">
-                </div>
-            </div>
-            <div class="Calendar">
-            <?php
-                for($i = 0; $i < 70; $i++) {
-            ?>
-                <button>
+            <div class="RepeatUpTo">
+                <p>Повторять по</p>
+                <p>Выбрать дату</p>
+                <div class="Date">
                     <div>
-                        <p>1/1/24</p>
+                        <p>Год</p>
+                        <input type="text" name="year">
                     </div>
-                </button>
-            <?php } ?>
+                    <div>
+                        <p>Месяц</p>
+                        <input type="text" name="month">
+                    </div>
+                    <div>
+                        <p>День</p>
+                        <input type="text" name="day">
+                    </div>
+                </div>
+                <div class="Calendar">
+                <?php
+                    for($i = 0; $i < 70; $i++) {
+                ?>
+                    <button>
+                        <div>
+                            <p>1/1/24</p>
+                        </div>
+                    </button>
+                <?php } ?>
+                </div>
             </div>
         </section>
         <script type="module" src="/src/js/calendar.js"></script>

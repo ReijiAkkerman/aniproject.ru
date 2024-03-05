@@ -35,6 +35,7 @@
 
         > form {
             @include c.flex(center);
+            z-index: 12;
 
             > .Main {
                 @include c.display;
@@ -99,20 +100,20 @@
                 }
             }
         }
-    }
 
-    > .RepeatUpTo {
-        // display: block;
-        display: none;
-        position: fixed;
-        z-index: 20;
-
-        > .Date {
-            @include c.flex(space-around);
-        }
-
-        > .Calendar {
-            @include c.grid(repeat(7, 1fr));
+        > .RepeatUpTo {
+            // display: block;
+            display: none;
+            position: fixed;
+            z-index: 20;
+    
+            > .Date {
+                @include c.flex(space-around);
+            }
+    
+            > .Calendar {
+                @include c.grid(repeat(7, 1fr));
+            }
         }
     }
 }

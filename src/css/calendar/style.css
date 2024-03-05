@@ -178,7 +178,7 @@
 .calendar > .NewEntry > form > .Adds > div:last-of-type > button:hover {
   background-color: #ccc;
 }
-.calendar > .RepeatUpTo {
+.calendar > .NewEntry > .RepeatUpTo {
   background-color: #fff;
   border-left: 1px solid #000;
   border-top: 1px solid #000;
@@ -188,39 +188,39 @@
   height: fit-content;
   text-align: center;
 }
-.calendar > .RepeatUpTo > p:first-of-type {
+.calendar > .NewEntry > .RepeatUpTo > p:first-of-type {
   font-weight: bold;
   font-size: 23px;
 }
-.calendar > .RepeatUpTo > p:last-of-type {
+.calendar > .NewEntry > .RepeatUpTo > p:last-of-type {
   font-size: 18px;
 }
-.calendar > .RepeatUpTo > .Date input[name] {
+.calendar > .NewEntry > .RepeatUpTo > .Date input[name] {
   width: 70px;
   text-align: center;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
 }
-.calendar > .RepeatUpTo > .Calendar {
+.calendar > .NewEntry > .RepeatUpTo > .Calendar {
   width: 300px;
   height: 350px;
   border-top: 1px solid #000;
   margin-top: 10px;
   overflow-y: scroll;
 }
-.calendar > .RepeatUpTo > .Calendar::-webkit-scrollbar {
+.calendar > .NewEntry > .RepeatUpTo > .Calendar::-webkit-scrollbar {
   width: 0;
 }
-.calendar > .RepeatUpTo > .Calendar > button > div {
+.calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div {
   box-sizing: border-box;
   height: 65px;
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
 }
-.calendar > .RepeatUpTo > .Calendar > button > div:hover {
+.calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div:hover {
   background-color: #ccc;
 }
-.calendar > .RepeatUpTo > .Calendar > button > div > p {
+.calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div > p {
   font-size: 10px;
 }
 

@@ -131,6 +131,16 @@ class Popup {
             Popup.repeat_prompt_status--;
         }
     }
+
+    focus() {
+        if(this.localName == 'form') {
+            let prompt = document.querySelector('.RepeatUpTo');
+            prompt.style.zIndex = 11;
+        }
+        else {
+            this.style.zIndex = 20;
+        }
+    }
 }
 
 export {Popup};
@@ -145,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
     element = document.querySelector('.NewEntry');
     element.addEventListener('click', Popup.hideForm);
     element = document.querySelector('.NewEntry > form');
+    element.addEventListener('click', calendar_popup.focus);
     element.addEventListener('click', Popup.stop);
     element = document.querySelector('#set_time');
     element.addEventListener('click', Popup.showFormSetTime);
@@ -157,4 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         element.addEventListener('click', calendar_popup.isCheckedInput);
         element.addEventListener('click', Popup.showFormRepeatPrompt);
     }
+    element = document.querySelector('.RepeatUpTo');
+    element.addEventListener('click', calendar_popup.focus);
+    element.addEventListener('click', Popup.stop);
 });
