@@ -45,7 +45,7 @@
                 <div class="Main">
                     <div>
                         <p class="bold">Наименование записи</p>
-                        <input type="text" name="name">
+                        <input type="text" name="title">
                     </div>
                     <div>
                         <p class="bold">Описание</p>
@@ -57,27 +57,27 @@
                             <div>
                                 <div>
                                     <p>Год</p>
-                                    <input type="text" maxlength=4>
+                                    <input type="text" maxlength=4 name="start_year">
                                 </div>
                                 <div>
                                     <p>Месяц</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="start_month">
                                 </div>
                                 <div>
                                     <p>День</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="start_day">
                                 </div>
                             </div>
                             <div>
                                 <div>
                                     <p>Час</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="start_hour">
                                 </div>
                                 <div>
                                     <p>Минута</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="start_minute">
                                 </div>
-                                <input type="hidden">
+                                <input type="hidden" name="without_time">
                             </div>
                         </div>
                         <div class="end">
@@ -85,28 +85,28 @@
                             <div>
                                 <div>
                                     <p>Год</p>
-                                    <input type="text" maxlength=4>
+                                    <input type="text" maxlength=4 name="end_year">
                                 </div>
                                 <div>
                                     <p>Месяц</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="end_month">
                                 </div>
                                 <div>
                                     <p>День</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="end_day">
                                 </div>
                             </div>
                             <div>
                                 <div>
                                     <p>Час</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="end_hour">
                                 </div>
                                 <div>
                                     <p>Минута</p>
-                                    <input type="text" maxlength=2>
+                                    <input type="text" maxlength=2 name="end_minute">
                                 </div>
                             </div>
-                            <input type="hidden">
+                            <input type="hidden" name="to_end_day">
                         </div>
                     </div>
                     <div class="Repeat">
@@ -114,22 +114,22 @@
                         <div>
                             <div>
                                 <div>
-                                    <input type="checkbox" name="day" id="day">
-                                    <label for="day">День</label>
+                                    <input type="checkbox" name="every_day" id="every_day">
+                                    <label for="every_day">День</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="month" id="month">
-                                    <label for="month">Месяц</label>
+                                    <input type="checkbox" name="every_month" id="every_month">
+                                    <label for="every_month">Месяц</label>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <input type="checkbox" name="week" id="week">
-                                    <label for="week">Неделя</label>
+                                    <input type="checkbox" name="every_week" id="every_week">
+                                    <label for="every_week">Неделя</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="year" id="year">
-                                    <label for="year">Год</label>
+                                    <input type="checkbox" name="every_year" id="every_year">
+                                    <label for="every_year">Год</label>
                                 </div>
                             </div>
                             <div>
@@ -187,23 +187,23 @@
                         <div class="Interval">
                             <div>
                                 <p>Год</p>
-                                <input type="text" maxlength=4>
+                                <input type="text" maxlength=4 name="interval_year">
                             </div>
                             <div>
                                 <p>Месяц</p>
-                                <input type="text" maxlength=2>
+                                <input type="text" maxlength=2 name="interval_month">
                             </div>
                             <div>
                                 <p>День</p>
-                                <input type="text" maxlength=2>
+                                <input type="text" maxlength=2 name="interval_day">
                             </div>
                             <div class="SetTime">
                                 <p>Час</p>
-                                <input type="text" maxlength=2>
+                                <input type="text" maxlength=2 name="interval_hour">
                             </div>
                             <div class="SetTime">
                                 <p>Минута</p>
-                                <input type="text" maxlength=2>
+                                <input type="text" maxlength=2 name="interval_minute">
                             </div>
                         </div>
                     </div>
@@ -219,15 +219,15 @@
                                 </svg>
                             </button>
                         </div>
-                        <input type="text" name="new_user" placeholder="Новая категория">
+                        <input type="text" name="new_cath" placeholder="Новая категория">
                         <div class="recent">
                             <div>
-                                <input type="checkbox" name="cath1<?= "" ?>" value="" id="cath1">
-                                <label for="cath1">Cathegory1</label>
+                                <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
+                                <label for="cath<?= "" ?>">Cathegory1</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="cath2<?= "" ?>" value="" id="cath2">
-                                <label for="cath2">Cathegory2</label>
+                                <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
+                                <label for="cath<?= "" ?>">Cathegory2</label>
                             </div>
                         </div>
                     </div>
@@ -244,12 +244,12 @@
                         <input type="text" name="new_user" placeholder="Новый пользователь">
                         <div class="recent">
                             <div>
-                                <input type="checkbox" name="user1<?= "" ?>" value="" id="user1">
-                                <label for="user1">User1</label>
+                                <input type="checkbox" name="user<?= "" ?>" value="<?= "" ?>" id="user<?= "" ?>">
+                                <label for="user<?= "" ?>">User1</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="user2<?= "" ?>" value="" id="user2">
-                                <label for="user2">User2</label>
+                                <input type="checkbox" name="user<?= "" ?>" value="<?= "" ?>" id="user<?= "" ?>">
+                                <label for="user<?= "" ?>">User2</label>
                             </div>
                         </div>
                     </div>

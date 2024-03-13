@@ -4,7 +4,8 @@
     use project\model\Entry;
 
     interface iEntry {
-        public function getEntry(): Entry|false;
-        public function getEntries(): array|false;
+        public function getEntries(): array|bool;
         public function saveEntries(): bool;
+        public function deleteEntries(): bool;
+        public function updateEntries(): bool;
     }

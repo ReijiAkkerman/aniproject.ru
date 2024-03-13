@@ -125,7 +125,11 @@
                 to_end_day BOOLEAN,
                 repetition VARCHAR(1000),
                 cathegory VARCHAR(255),
-                related_users TEXT
+                task_nesting TEXT,
+                related_users TEXT,
+                materials TEXT,
+                parent VARCHAR(255),
+                direct_descendants TEXT
             )";
             $mysql->query($query);
             $mysql->close();

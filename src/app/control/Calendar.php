@@ -10,4 +10,8 @@
         }
 
         use ViewPage;
+
+        public function entry(string $method): void {
+            
+        }
     }

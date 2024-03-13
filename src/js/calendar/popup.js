@@ -84,7 +84,7 @@ class Popup {
 
     static hideDefaultRepeats() {
         let element;
-        let $array = ['#year', '#day', '#month', '#week'];
+        let $array = ['#every_year', '#every_day', '#every_month', '#every_week'];
         for(let i = 0; i < $array.length; i++) {
             element = document.querySelector($array[i]);
             element.checked = false;
@@ -97,10 +97,10 @@ class Popup {
 
     hideRestRepeats() {
         let element;
-        let $array = ['#year', '#day', '#month', '#week'];
+        let $array = ['#every_year', '#every_day', '#every_month', '#every_week'];
         for(let i = 0; i < $array.length; i++) {
             element = document.querySelector($array[i]);
-            if(element.id == this.id && element.id == 'week') {
+            if(element.id == this.id && element.id == 'every_week') {
                 if(element.checked) 
                     Popup.week_status = false;
                 else 
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
     element.addEventListener('click', Popup.showFormSetTime);
     element = document.querySelector('#interval');
     element.addEventListener('click', Popup.showFormInterval);
-    let $array = ['#year', '#day', '#month', '#week'];
+    let $array = ['#every_year', '#every_day', '#every_month', '#every_week'];
     for(let i = 0; i < $array.length; i++) {
         element = document.querySelector($array[i]);
         element.addEventListener('click', calendar_popup.hideRestRepeats);

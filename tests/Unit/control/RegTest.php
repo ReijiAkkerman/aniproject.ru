@@ -1,5 +1,5 @@
 <?php
-    namespace tests\Unit;
+    namespace tests\Unit\control;
 
     require_once __DIR__ . "/../../vendor/autoload.php";
 
