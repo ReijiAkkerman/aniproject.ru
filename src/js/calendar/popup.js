@@ -122,13 +122,13 @@ class Popup {
     isCheckedInput() {
         let element = document.querySelector('#interval');
         if(this.checked) {
-            Popup.repeat_prompt_status++;
+            Popup.repeat_prompt_status = 1;
             element.checked = false;
             Popup.interval_status = true;
             Popup.showFormInterval();
         }
         else {
-            Popup.repeat_prompt_status--;
+            Popup.repeat_prompt_status = 0;
         }
     }
 
