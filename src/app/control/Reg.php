@@ -31,11 +31,11 @@
         public function registrateUser(): void {
             $fieldsAreGood = $this->getFieldValues();
             if($fieldsAreGood) {
-                $newUser = $this->isNewUser();
+                $newUser = $this->isNewUser($this->server, $this->connect_from);
                 if($newUser) {
-                    $this->createAccessToken();
-                    $this->registrate();
-                    $this->sendCookie();
+                    $this->createAccessToken($this->server);
+                    $this->registrate($this->server);
+                    $this->sendCookie($this->server);
                     header("Location: ../calendar/view");
                     exit;
                 }
@@ -54,8 +54,8 @@
 
 
 
-        public function sendCookie(): void {
-            $userID = $this->getUserID();
+        public function sendCookie(string $server = 'localhost'): void {
+            $userID = $this->getUserID($server);
             setcookie('ID', $userID, time() + $this->activityTime, '/');
             setcookie('token', $this->accessToken, time() + $this->activityTime, '/');
         }
@@ -123,7 +123,8 @@
                 end_time INT,
                 without_time BOOLEAN,
                 to_end_day BOOLEAN,
-                repetition VARCHAR(1000),
+                repetition_main VARCHAR(100),
+                repetition_addition VARCHAR(100),
                 cathegory VARCHAR(255),
                 task_nesting TEXT,
                 related_users TEXT,
@@ -147,7 +148,7 @@
             $mysql->close();
         }
         
-        private function init(string $server = 'localhost', string $connect_from = 'localhost'): void {
+        public function init(string $server = 'localhost', string $connect_from = 'localhost'): void {
             $mysql = new \mysqli($server, 'root', 'KisaragiEki4');
             $databases = [
                 "Users",

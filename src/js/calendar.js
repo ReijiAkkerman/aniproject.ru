@@ -1,1 +1,2 @@
-import {Popup} from "./calendar/popup.js";
+import {Popup} from "./calendar/Popup.js";
+import {Entry} from "./calendar/Entry.js";

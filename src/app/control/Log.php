@@ -33,11 +33,11 @@
                     $verifiedFieldsContent = $this->verifyFieldsContent();
                     if($verifiedFieldsContent) {
                         $this->getFieldsContent();
-                        $isUser = $this->isUser($this->login, $this->loginType);
+                        $isUser = $this->isUser($this->login, $this->loginType, $this->server);
                         if($isUser) {
-                            $rightPassword = $this->comparePassword($this->login, $this->password, $this->loginType);
+                            $rightPassword = $this->comparePassword($this->login, $this->password, $this->loginType, $this->server);
                             if($rightPassword) {
-                                $this->sendCookie();
+                                $this->sendCookie($this->server);
                                 header("Location: ../calendar/view");
                                 exit;
                             }
@@ -66,7 +66,7 @@
 
         public function sendCookie(string $server = 'localhost'): void {
             $this->userID = $this->getUserID($this->login, $this->loginType, $server);
-            $this->getAccessToken();
+            $this->getAccessToken($server);
             setcookie('ID', $this->userID, time() + $this->activityTime, '/');
             setcookie('token', $this->accessToken, time() + $this->activityTime, '/');
         }

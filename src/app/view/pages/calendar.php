@@ -53,7 +53,7 @@
                     </div>
                     <div class="Date">
                         <div class="start">
-                            <button class="bold">Начало</button>
+                            <button class="bold" id="DateTime_start">Начало</button>
                             <div>
                                 <div>
                                     <p>Год</p>
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                         <div class="end">
-                            <button class="bold">Конец</button>
+                            <button class="bold" id="DateTime_end">Конец</button>
                             <div>
                                 <div>
                                     <p>Год</p>
@@ -148,37 +148,37 @@
                         <div class="Week">
                             <div>
                                 <div>
-                                    <input type="checkbox" name="monday" id="monday">
+                                    <input type="checkbox" name="monday" id="monday" value="monday">
                                     <label for="monday">Понедельник</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="tuesday" id="tuesday">
+                                    <input type="checkbox" name="tuesday" id="tuesday" value="tuesday">
                                     <label for="tuesday">Вторник</label>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <input type="checkbox" name="wednesday" id="wednesday">
+                                    <input type="checkbox" name="wednesday" id="wednesday" value="wednesday">
                                     <label for="wednesday">Среда</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="thursday" id="thursday">
+                                    <input type="checkbox" name="thursday" id="thursday" value="thursday">
                                     <label for="thursday">Четверг</label>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <input type="checkbox" name="friday" id="friday">
+                                    <input type="checkbox" name="friday" id="friday" value="friday">
                                     <label for="friday">Пятница</label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="saturday" id="saturday">
+                                    <input type="checkbox" name="saturday" id="saturday" value="saturday">
                                     <label for="saturday">Суббота</label>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <input type="checkbox" name="sunday" id="sunday">
+                                    <input type="checkbox" name="sunday" id="sunday" value="sunday">
                                     <label for="sunday">Воскресенье</label>
                                 </div>
                                 <div></div>
@@ -254,7 +254,7 @@
                         </div>
                     </div>
                     <div>
-                        <button>Сохранить</button>
+                        <button id="save_button">Сохранить</button>
                     </div>
                 </div>
             </form>

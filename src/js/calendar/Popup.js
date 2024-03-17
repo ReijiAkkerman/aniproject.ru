@@ -3,6 +3,8 @@ class Popup {
     static set_time_status;
     static interval_status;
     static repeat_prompt_status;
+    static without_time_status;
+    static to_end_day_status;
 
     constructor() {
         Popup.repeat_prompt_status = 0;
@@ -95,6 +97,99 @@ class Popup {
         Popup.showFormRepeatPrompt();
     }
 
+    static checkWithoutTime(event) {
+        event.preventDefault();
+        if(typeof Popup.without_time_status == 'undefined')
+            Popup.without_time_status = false;
+        let to_end_day_input = document.querySelector('input[name="to_end_day"]');
+        let without_time_input = document.querySelector('input[name="without_time"]');
+        let button_start = document.querySelector('#DateTime_start');
+        let button_end = document.querySelector('#DateTime_end');
+        let inputs = document.querySelectorAll('.NewEntry form .Date input[type="text"]');
+        let labels = document.querySelectorAll('.NewEntry form .Date p');
+        if(Popup.without_time_status == false) {
+            button_start.style.textDecoration = 'line-through';
+            button_end.style.textDecoration = 'line-through';
+            for(let i = 0; i < inputs.length; i++) {
+                inputs[i].style.borderColor = '#aaa';
+                inputs[i].setAttribute('readonly', '');
+                labels[i].style.color = '#aaa';
+            }
+            without_time_input.value = 'on';
+            to_end_day_input.value = '';
+            Popup.without_time_status = true;
+        }
+        else {
+            button_start.style.textDecoration = 'none';
+            button_end.style.textDecoration = 'none';
+            for(let i = 0; i < inputs.length; i++) {
+                inputs[i].style.borderColor = '#000';
+                inputs[i].removeAttribute('readonly');
+                labels[i].style.color = '#000';
+            }
+            without_time_input.value = '';
+            Popup.without_time_status = false;
+            Popup.keepToEndDay_status();
+        }
+    }
+
+    static checkToEndDay(event) {
+        event.preventDefault();
+        if(!Popup.without_time_status) {
+            if(typeof Popup.to_end_day_status == 'undefined')
+                Popup.to_end_day_status = false;
+            let to_end_day_input = document.querySelector('input[name="to_end_day"]');
+            let button_end = document.querySelector('#DateTime_end');
+            let end_inputs = document.querySelectorAll('.NewEntry form .Date .end input[type="text"]');
+            let end_labels = document.querySelectorAll('.NewEntry form .Date .end p');
+            if(Popup.to_end_day_status == false) {
+                button_end.textContent = 'До конца дня';
+                for(let i = 0; i < end_inputs.length; i++) {
+                    end_inputs[i].style.borderColor = '#aaa';
+                    end_inputs[i].setAttribute('readonly', '');
+                    end_labels[i].style.color = '#aaa';
+                }
+                to_end_day_input.value = 'on'
+                Popup.to_end_day_status = true;
+            }
+            else {
+                button_end.textContent = 'Конец';
+                for(let i = 0; i < end_inputs.length; i++) {
+                    end_inputs[i].style.borderColor = '#000';
+                    end_inputs[i].removeAttribute('readonly');
+                    end_labels[i].style.color = '#000';
+                }
+                to_end_day_input.value = '';
+                Popup.to_end_day_status = false;
+            }
+        }
+    }
+
+    static keepToEndDay_status() {
+        let to_end_day_input = document.querySelector('input[name="to_end_day"]');
+        let button_end = document.querySelector('#DateTime_end');
+        let end_inputs = document.querySelectorAll('.NewEntry form .Date .end input[type="text"]');
+        let end_labels = document.querySelectorAll('.NewEntry form .Date .end p');
+        if(Popup.to_end_day_status == true) {
+            button_end.textContent = 'До конца дня';
+            for(let i = 0; i < end_inputs.length; i++) {
+                end_inputs[i].style.borderColor = '#aaa';
+                end_inputs[i].setAttribute('readonly', '');
+                end_labels[i].style.color = '#aaa';
+            }
+            to_end_day_input.value = 'on';
+        }
+        else {
+            button_end.textContent = 'Конец';
+            for(let i = 0; i < end_inputs.length; i++) {
+                end_inputs[i].style.borderColor = '#000';
+                end_inputs[i].removeAttribute('readonly');
+                end_labels[i].style.color = '#000';
+            }
+            to_end_day_input.value = '';
+        }
+    }
+
     hideRestRepeats() {
         let element;
         let $array = ['#every_year', '#every_day', '#every_month', '#every_week'];
@@ -170,5 +265,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     element = document.querySelector('.RepeatUpTo');
     element.addEventListener('click', calendar_popup.focus);
+    element.addEventListener('click', Popup.stop);
+    element = document.querySelector('#DateTime_start');
+    element.addEventListener('click', Popup.checkWithoutTime);
+    element.addEventListener('click', Popup.stop);
+    element = document.querySelector('#DateTime_end');
+    element.addEventListener('click', Popup.checkToEndDay);
     element.addEventListener('click', Popup.stop);
 });
