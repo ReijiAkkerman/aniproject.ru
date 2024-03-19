@@ -19,74 +19,78 @@
         public function getValues(): bool {
             $Type = $this->defineType();
             $this->created = time();
-            switch($Type) {
-                case 'without_time':
-                    $this->without_time = true;
-                    $this->to_end_day = false;
-                    $this->start = 0;
-                    $this->end = 0;
-                    return true;
-                    break;
-                case 'to_end_day':
-                    foreach($this->dateTimeLabels as $label) {
-                        $regex = $this->getRegex($label);
-                        $valueMatches = $this->validateValue($regex, $_POST['start_' . $label]);
-                        if(!$valueMatches)
-                            return false;
-                    }
-                    $this->without_time = false;
-                    $this->to_end_day = true;
-                    $this->start = mktime(
-                        (int)$_POST['start_hour'],
-                        (int)$_POST['start_minute'],
-                        0,
-                        (int)$_POST['start_month'],
-                        (int)$_POST['start_day'],
-                        (int)$_POST['start_year']
-                    );
-                    $this->end = mktime(
-                        23,
-                        59,
-                        59,
-                        (int)$_POST['start_month'],
-                        (int)$_POST['start_day'],
-                        (int)$_POST['start_year']
-                    );
-                    return true;
-                    break;
-                case 'both':
-                    foreach($this->dateTimeTypes as $type) {
+            if($Type) {
+                switch($Type) {
+                    case 'without_time':
+                        $this->without_time = true;
+                        $this->to_end_day = false;
+                        $this->start = 0;
+                        $this->end = 0;
+                        return true;
+                        break;
+                    case 'to_end_day':
                         foreach($this->dateTimeLabels as $label) {
                             $regex = $this->getRegex($label);
-                            $valueMatches = $this->validateValue($regex, $_POST[$type . '_' . $label]);
+                            $valueMatches = $this->validateValue($regex, $_POST['start_' . $label]);
                             if(!$valueMatches)
                                 return false;
                         }
-                    }
-                    $this->without_time = false;
-                    $this->to_end_day = false;
-                    $this->start = mktime(
-                        (int)$_POST['start_hour'],
-                        (int)$_POST['start_minute'],
-                        0,
-                        (int)$_POST['start_month'],
-                        (int)$_POST['start_day'],
-                        (int)$_POST['start_year']
-                    );
-                    $this->end = mktime(
-                        (int)$_POST['end_hour'],
-                        (int)$_POST['end_minute'],
-                        0,
-                        (int)$_POST['end_month'],
-                        (int)$_POST['end_day'],
-                        (int)$_POST['end_year']
-                    );
-                    return true;
-                    break;
+                        $this->without_time = false;
+                        $this->to_end_day = true;
+                        $this->start = mktime(
+                            (int)$_POST['start_hour'],
+                            (int)$_POST['start_minute'],
+                            0,
+                            (int)$_POST['start_month'],
+                            (int)$_POST['start_day'],
+                            (int)$_POST['start_year']
+                        );
+                        $this->end = mktime(
+                            23,
+                            59,
+                            59,
+                            (int)$_POST['start_month'],
+                            (int)$_POST['start_day'],
+                            (int)$_POST['start_year']
+                        );
+                        return true;
+                        break;
+                    case 'both':
+                        foreach($this->dateTimeTypes as $type) {
+                            foreach($this->dateTimeLabels as $label) {
+                                $regex = $this->getRegex($label);
+                                $valueMatches = $this->validateValue($regex, $_POST[$type . '_' . $label]);
+                                if(!$valueMatches)
+                                    return false;
+                            }
+                        }
+                        $this->without_time = false;
+                        $this->to_end_day = false;
+                        $this->start = mktime(
+                            (int)$_POST['start_hour'],
+                            (int)$_POST['start_minute'],
+                            0,
+                            (int)$_POST['start_month'],
+                            (int)$_POST['start_day'],
+                            (int)$_POST['start_year']
+                        );
+                        $this->end = mktime(
+                            (int)$_POST['end_hour'],
+                            (int)$_POST['end_minute'],
+                            0,
+                            (int)$_POST['end_month'],
+                            (int)$_POST['end_day'],
+                            (int)$_POST['end_year']
+                        );
+                        return true;
+                        break;
+                }
             }
+            else 
+                return false;
         }
 
-        public function defineType(): string|false {
+        private function defineType(): string|false {
             $without_time = isset($_POST['without_time']) && $_POST['without_time'];
             $to_end_day = isset($_POST['to_end_day']) && $_POST['to_end_day'];
             if($without_time && $to_end_day) {
@@ -103,12 +107,8 @@
                 return 'both';
         }
 
-        public function validateValue(Regex $regex, string $data): bool {
+        private function validateValue(Regex $regex, string $data): bool {
             $result = preg_match($regex->value, $data);
             return $result;
-        }
-
-        public function prepareValues(string $name, bool $value): void {
-            $this->$name = (int)$value;
         }
     }

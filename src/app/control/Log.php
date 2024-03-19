@@ -33,11 +33,11 @@
                     $verifiedFieldsContent = $this->verifyFieldsContent();
                     if($verifiedFieldsContent) {
                         $this->getFieldsContent();
-                        $isUser = $this->isUser($this->login, $this->loginType, $this->server);
+                        $isUser = $this->isUser($this->login, $this->loginType, Page::$server);
                         if($isUser) {
-                            $rightPassword = $this->comparePassword($this->login, $this->password, $this->loginType, $this->server);
+                            $rightPassword = $this->comparePassword($this->login, $this->password, $this->loginType, Page::$server);
                             if($rightPassword) {
-                                $this->sendCookie($this->server);
+                                $this->sendCookie(Page::$server);
                                 header("Location: ../calendar/view");
                                 exit;
                             }

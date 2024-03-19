@@ -31,11 +31,11 @@
         public function registrateUser(): void {
             $fieldsAreGood = $this->getFieldValues();
             if($fieldsAreGood) {
-                $newUser = $this->isNewUser($this->server, $this->connect_from);
+                $newUser = $this->isNewUser(Page::$server, Page::$connect_from);
                 if($newUser) {
-                    $this->createAccessToken($this->server);
-                    $this->registrate($this->server);
-                    $this->sendCookie($this->server);
+                    $this->createAccessToken(Page::$server);
+                    $this->registrate(Page::$server);
+                    $this->sendCookie(Page::$server);
                     header("Location: ../calendar/view");
                     exit;
                 }
@@ -99,8 +99,9 @@
                 password,
                 registration_time,
                 last_enter_time,
-                groups_users,
-                access_token
+                users,
+                access_token,
+                recent_users
             ) VALUES (
                 '{$this->email}',
                 '{$this->login}',
@@ -109,7 +110,8 @@
                 $reg_time,
                 $reg_time,
                 null,
-                '{$this->accessToken}'
+                '{$this->accessToken}',
+                null
             )";
             $mysql->query($query);
             $mysql->close();
@@ -175,8 +177,9 @@
                 password VARCHAR(255),
                 registration_time INT,
                 last_enter_time INT, 
-                groups_users TEXT,
-                access_token VARCHAR(255)
+                users TEXT,
+                access_token VARCHAR(255),
+                recent_users TEXT 
             )";
             $mysql->query($query);
             $query = "REVOKE CREATE, DROP ON Users.* FROM 'Users'@'$connect_from'";

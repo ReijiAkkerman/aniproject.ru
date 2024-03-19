@@ -9,8 +9,8 @@
         protected string $userID;
         protected string $accessToken;
 
-        protected string $server = '172.18.0.2';
-        protected string $connect_from = '%';
+        static string $server = '172.18.0.2';
+        static string $connect_from = '%';
 
         abstract public function view();
 
@@ -26,7 +26,7 @@
         }
 
         private function getRoute(): void {
-            $isAccessToken = $this->validateAccessToken($this->server);
+            $isAccessToken = $this->validateAccessToken(Page::$server);
             if($isAccessToken) {
                 setcookie('ID', $this->userID, time() + $this->activityTime, '/');
                 setcookie('token', $this->accessToken, time() + $this->activityTime, '/');

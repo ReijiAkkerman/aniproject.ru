@@ -1,6 +1,7 @@
 <?php
     namespace project\model;
 
+    use project\control\parent\Page;
     use project\model\abstract\iEntry;
     use project\model\traits\DateTime;
     use project\model\traits\Repetition;
@@ -11,9 +12,9 @@
     class Entry implements iEntry {
         public string $title;
         public string $description;
-        public ?int $start;
+        public int $start;
         public int $created;
-        public ?int $end;
+        public int $end;
         public bool $without_time;
         public bool $to_end_day;
         public string $repetition_main;
@@ -27,58 +28,67 @@
 
         public string $error_message;
 
+        private array $functions;
 
+        public function __construct() {
+            $this->functions = [
+                'getTitle',
+                'getDescription',
+                'getDateTimeValues',
+                'getRepetitionValues'
+            ];
+        }
 
         public function getEntries(): void {
 
         }
 
         public function saveEntries(): void {
-            
-            $this->getTitle();
-            $this->getDescription();
-            $this->getDateTimeValues();
+            $isGood = $this->checkFunctions();
+            if($isGood) {
+                $without_time = (int)$this->without_time;
+                $to_end_day = (int)$this->to_end_day;
 
-            $without_time = (int)$this->without_time;
-            $to_end_day = (int)$this->to_end_day;
-
-            $mysql = new \mysqli('172.18.0.2', 'Entries', 'kISARAGIeKI4', 'Entries');
-            $query = "INSERT INTO ReijiAkkerman(
-                title,
-                description,
-                creation_time,
-                start_time,
-                end_time,
-                without_time,
-                to_end_day,
-                repetition_main,
-                repetition_addition,
-                cathegory,
-                task_nesting,
-                related_users,
-                materials,
-                parent,
-                direct_descendants
-            ) VALUES (
-                '{$this->title}',
-                '{$this->description}',
-                {$this->created},
-                {$this->start},
-                {$this->end},
-                $without_time,
-                $to_end_day,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-            )";
-            $mysql->query($query);
-            $mysql->close();
-            echo 'successful';
+                $mysql = new \mysqli(Page::$server, 'Entries', 'kISARAGIeKI4', 'Entries');
+                $query = "INSERT INTO ReijiAkkerman(
+                    title,
+                    description,
+                    creation_time,
+                    start_time,
+                    end_time,
+                    without_time,
+                    to_end_day,
+                    repetition_main,
+                    repetition_addition,
+                    cathegory,
+                    task_nesting,
+                    related_users,
+                    materials,
+                    parent,
+                    direct_descendants
+                ) VALUES (
+                    '{$this->title}',
+                    '{$this->description}',
+                    {$this->created},
+                    {$this->start},
+                    {$this->end},
+                    $without_time,
+                    $to_end_day,
+                    '{$this->repetition_main}',
+                    '{$this->repetition_addition}',
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                )";
+                $mysql->query($query);
+                $mysql->close();
+                echo 'successful';
+            }
+            else 
+                echo 'not successful';
         }
 
         public function deleteEntries(): bool {
@@ -129,12 +139,28 @@
         }
 
         use DateTime {
+            DateTime::getValues insteadOf Repetition;
+
             DateTime::getValues as getDateTimeValues;
             DateTime::defineType as defineDateTimeType;
             DateTime::validateValue as validateDateTimeValue;
         }
 
-        
+        use Repetition {
+            Repetition::getValues as getRepetitionValues;
+            Repetition::getMainTypesNumber as getRepetitionMainTypesNumber;
+        }
+
+        private function checkFunctions(): bool {
+            for($i = 0; $i < sizeof($this->functions); $i++) {
+                $functionName = $this->functions[$i];
+                $true = $this->$functionName();
+                if(!$true) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private function getRegex(string $name): Regex|false {
             $regex = match($name) {

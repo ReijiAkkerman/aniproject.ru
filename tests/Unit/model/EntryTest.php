@@ -87,14 +87,52 @@
             $this->assertTrue($result);
         }
 
-        public function testPrepareValues(): void {
+        public function testGetRepetitionValues(): void {
             $obj = new Entry();
 
-            $obj->without_time = false;
-            $obj->to_end_day = true;
+            $_POST['every_day'] = 'on';
+            $_POST['every_year'] = 'on';
 
-            $obj->prepareValues();
-            $this->assertIsInt($obj->without_time);
-            $this->assertIsInt($obj->to_end_day);
+            $result = $obj->getRepetitionValues();
+            $this->assertFalse($result);
+
+            $_POST['every_week'] = 'on';
+
+            $result = $obj->getRepetitionValues();
+            $this->assertFalse($result);
+
+            unset($_POST['every_year']);
+
+            $result = $obj->getRepetitionValues();
+            $this->assertFalse($result);
+
+            unset($_POST['every_day']);
+
+            $result = $obj->getRepetitionValues();
+            $this->assertTrue($result);
+            $this->assertSame('', $obj->repetition_addition);
+
+            $_POST['monday'] = 'monday';
+            $_POST['thursday'] = 'thursday';
+
+            $result = $obj->getRepetitionValues();
+            $this->assertTrue($result);
+            $this->assertSame('monday,thursday', $obj->repetition_addition);
+            $this->assertSame('every_week', $obj->repetition_main);
+
+            unset($_POST['monday']);
+            unset($_POST['thursday']);
+            unset($_POST['every_week']);
+            $_POST['interval'] = 'on';
+            $_POST['interval_year'] = '2024';
+            $_POST['interval_month'] = '3';
+            $_POST['interval_day'] = '16';
+            $_POST['interval_hour'] = '20';
+            $_POST['interval_minute'] = '30';
+
+            $result = $obj->getRepetitionValues();
+            $this->assertTrue($result);
+            $this->assertSame('2024,3,16,20,30', $obj->repetition_addition);
+            $this->assertSame('interval', $obj->repetition_main);
         }
     }
