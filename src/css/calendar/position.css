@@ -102,6 +102,16 @@
   justify-content: start;
   flex-direction: column;
 }
+.calendar > .NewEntry > form > .Adds > div > div:first-child {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+.calendar > .NewEntry > form > .Adds > div > div:first-child > div {
+  display: flex;
+  position: relative;
+  justify-content: start;
+}
 .calendar > .NewEntry > form > .Adds > div > .list {
   display: flex;
   position: relative;

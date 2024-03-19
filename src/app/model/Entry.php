@@ -48,9 +48,10 @@
             if($isGood) {
                 $without_time = (int)$this->without_time;
                 $to_end_day = (int)$this->to_end_day;
+                $user = Page::$user_login;
 
                 $mysql = new \mysqli(Page::$server, 'Entries', 'kISARAGIeKI4', 'Entries');
-                $query = "INSERT INTO ReijiAkkerman(
+                $query = "INSERT INTO $user(
                     title,
                     description,
                     creation_time,
@@ -141,6 +142,7 @@
 
         private function checkFunctions(): bool {
             for($i = 0; $i < sizeof($this->functions); $i++) {
+                echo $i;
                 $functionName = $this->functions[$i];
                 $true = $this->$functionName();
                 if(!$true) {

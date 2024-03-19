@@ -12,9 +12,16 @@
         static string $server = '172.18.0.2';
         static string $connect_from = '%';
 
-        static string $login;
+        static string $user_login;
 
-        abstract public function view();
+        abstract public function view(): void;
+
+        public function exit(): void {
+            setcookie('ID', '', time() - 1, '/');
+            setcookie('token', '', time() - 1, '/');
+            header('Location: ../log/view');
+            exit;
+        }
 
         protected function constructor(): void {
             $this->exclude = [
@@ -25,16 +32,16 @@
             $this->userID = false;
             $this->accessToken = false;
             $this->getRoute();
-            $this->getLogin(Page::$server);
         }
 
         private function getRoute(): void {
             $isAccessToken = $this->validateAccessToken(Page::$server);
             if($isAccessToken) {
-
+                $this->getLogin(Page::$server);
                 setcookie('ID', $this->userID, time() + $this->activityTime, '/');
                 setcookie('token', $this->accessToken, time() + $this->activityTime, '/');
-                if(in_array(Router::$folder, $this->exclude)) {
+                $in_array = in_array(Router::$folder, $this->exclude);
+                if($in_array) {
                     header("Location: ../calendar/view");
                     exit;
                 }
@@ -42,7 +49,8 @@
             else {
                 setcookie('ID', 0, time() - 1, '/');
                 setcookie('token', 0, time() - 1, '/');
-                if(in_array(Router::$folder, $this->exclude)) {
+                $in_array = in_array(Router::$folder, $this->exclude);
+                if($in_array) {
                     ;
                 }
                 else {
@@ -83,7 +91,7 @@
             $result = $mysql->query($query);
             if($result->num_rows) {
                 foreach($result as $row) {
-                    Page::$login = $row['login'];
+                    Page::$user_login = $row['login'];
                 }
             }
             $mysql->close();

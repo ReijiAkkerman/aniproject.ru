@@ -45,11 +45,17 @@ header.common > .Header .Actions .Search > button {
 }
 header.common > .Header .Actions .Search ~ button {
   border-bottom: 1px solid rgba(0, 0, 0, 0);
+  margin: auto;
 }
 header.common > .Header .Actions .Search ~ button:hover {
   border-color: #000;
 }
-header.common > .Header .Actions .Search ~ button > svg {
+header.common > .Header .Actions .Search ~ button > a {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+}
+header.common > .Header .Actions .Search ~ button svg {
   width: 25px;
   height: 25px;
   padding: 0 10px;

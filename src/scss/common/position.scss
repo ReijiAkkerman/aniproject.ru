@@ -19,6 +19,12 @@ header.common {
     
                     > .Search {
                         @include c.flex(start);
+
+                        ~ button {
+                            > a {
+                                display: inline-block;
+                            }
+                        }
                     }
                 }
             }

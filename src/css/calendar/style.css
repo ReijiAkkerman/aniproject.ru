@@ -136,6 +136,18 @@
   padding: 10px 0;
   gap: 10px;
 }
+.calendar > .NewEntry > form > .Adds > div > div:first-child > div {
+  border: 1px solid #000;
+}
+.calendar > .NewEntry > form > .Adds > div > div:first-child > div > button:first-of-type {
+  border-right: 1px solid #000;
+}
+.calendar > .NewEntry > form > .Adds > div > div:first-child > div > button > svg {
+  width: 16px;
+  height: 16px;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
 .calendar > .NewEntry > form > .Adds > div > input {
   box-sizing: border-box;
   padding-left: 5px;

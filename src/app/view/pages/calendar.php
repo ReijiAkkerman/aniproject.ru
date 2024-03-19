@@ -210,26 +210,46 @@
                 </div>
                 <div class="Adds">
                     <div>
-                        <p class="bold">Категории</p>
-                        <div class="list">
-                            <p>Категория</p>
-                            <button>
-                                <svg viewBox="0 0 1024 1024">
-                                <path d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <input type="text" name="new_cath" placeholder="Новая категория">
-                        <div class="recent">
+                        <div>
+                            <p class="bold">Категории</p>
                             <div>
-                                <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
-                                <label for="cath<?= "" ?>">Cathegory1</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
-                                <label for="cath<?= "" ?>">Cathegory2</label>
+                                <button>
+                                    <svg viewBox="0 0 512.006 512.006">
+                                        <path d="M388.419,475.59L168.834,256.005L388.418,36.421c8.341-8.341,8.341-21.824,0-30.165s-21.824-8.341-30.165,0
+                                            L123.586,240.923c-8.341,8.341-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251
+                                            c5.461,0,10.923-2.091,15.083-6.251C396.76,497.414,396.76,483.931,388.419,475.59z"/>
+                                    </svg>
+                                </button>
+                                <button>
+                                    <svg viewBox="0 0 512.005 512.005">
+                                        <path d="M388.418,240.923L153.751,6.256c-8.341-8.341-21.824-8.341-30.165,0s-8.341,21.824,0,30.165L343.17,256.005
+                                            L123.586,475.589c-8.341,8.341-8.341,21.824,0,30.165c4.16,4.16,9.621,6.251,15.083,6.251c5.461,0,10.923-2.091,15.083-6.251
+                                            l234.667-234.667C396.759,262.747,396.759,249.264,388.418,240.923z"/>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
+                        <!-- <div class="cathegory"> -->
+                            <div class="list">
+                                <p>Категория</p>
+                                <button>
+                                    <svg viewBox="0 0 1024 1024">
+                                    <path d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <input type="text" name="new_cath" placeholder="Новая категория">
+                            <div class="recent">
+                                <div>
+                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
+                                    <label for="cath<?= "" ?>">Cathegory1</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
+                                    <label for="cath<?= "" ?>">Cathegory2</label>
+                                </div>
+                            </div>
+                        <!-- </div> -->
                     </div>
                     <div>
                         <p class="bold">Пользователи</p>

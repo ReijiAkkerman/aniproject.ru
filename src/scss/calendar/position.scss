@@ -94,6 +94,14 @@
                 > div {
                     @include c.flex(start, null, column);
 
+                    > div:first-child {
+                        @include c.flex(space-between);
+
+                        > div {
+                            @include c.flex(start);
+                        }
+                    }
+
                     > .list {
                         @include c.flex(space-between);
                     }

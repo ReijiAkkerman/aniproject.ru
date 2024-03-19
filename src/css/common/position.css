@@ -28,6 +28,9 @@ header.common > .Header > div:first-of-type > .Actions > div > .Search {
   position: relative;
   justify-content: start;
 }
+header.common > .Header > div:first-of-type > .Actions > div > .Search ~ button > a {
+  display: inline-block;
+}
 header.common > .Header > div:first-of-type > .Info {
   display: flex;
   position: relative;

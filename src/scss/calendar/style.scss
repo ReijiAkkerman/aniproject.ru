@@ -178,6 +178,26 @@
                     padding: 10px 0;
                     gap: 10px;
 
+                    > div:first-child {
+                        > div {
+                            @include c.border(none);
+                            
+
+                            > button {
+                                &:first-of-type {
+                                    @include c.border(right);
+                                }
+
+                                > svg {
+                                    width: 16px;
+                                    height: 16px;
+                                    padding-top: 2px;
+                                    padding-bottom: 5px;
+                                }
+                            }
+                        }
+                    }
+
                     > input {
                         box-sizing: border-box;
                         padding-left: 5px;
