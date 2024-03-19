@@ -212,7 +212,7 @@
                     <div>
                         <div>
                             <p class="bold">Категории</p>
-                            <div>
+                            <div class="switchTo">
                                 <button>
                                     <svg viewBox="0 0 512.006 512.006">
                                         <path d="M388.419,475.59L168.834,256.005L388.418,36.421c8.341-8.341,8.341-21.824,0-30.165s-21.824-8.341-30.165,0
@@ -229,7 +229,7 @@
                                 </button>
                             </div>
                         </div>
-                        <!-- <div class="cathegory"> -->
+                        <div class="changeable cathegories">
                             <div class="list">
                                 <p>Категория</p>
                                 <button>
@@ -249,7 +249,28 @@
                                     <label for="cath<?= "" ?>">Cathegory2</label>
                                 </div>
                             </div>
-                        <!-- </div> -->
+                        </div>
+                        <div class="changeable tasks">
+                            <div class="list">
+                                <p>Задача</p>
+                                <button>
+                                    <svg viewBox="0 0 1024 1024">
+                                    <path d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <input type="text" name="new_cath" placeholder="Новая задача">
+                            <div class="recent">
+                                <div>
+                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
+                                    <label for="task<?= "" ?>">Task1</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
+                                    <label for="task<?= "" ?>">Task2</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <p class="bold">Пользователи</p>

@@ -5,9 +5,13 @@ class Popup {
     static repeat_prompt_status;
     static without_time_status;
     static to_end_day_status;
+    static cathegories_disabled;
+    static tasks_disabled;
 
     constructor() {
         Popup.repeat_prompt_status = 0;
+        Popup.cathegories_disabled = false;
+        Popup.tasks_disabled = true;
     }
 
     static showForm() {
@@ -179,7 +183,9 @@ class Popup {
             }
             to_end_day_input.value = 'on';
         }
-        else {
+        else {let title = document.querySelector('.NewEntry .Adds p.bold');
+        let caths = document.querySelector('.NewEntry .Adds .changeable.cathegories');
+        let tasks = document.querySelector('.NewEntry .Adds .changeable.tasks');
             button_end.textContent = 'Конец';
             for(let i = 0; i < end_inputs.length; i++) {
                 end_inputs[i].style.borderColor = '#000';
@@ -187,6 +193,42 @@ class Popup {
                 end_labels[i].style.color = '#000';
             }
             to_end_day_input.value = '';
+        }
+    }
+
+    static switchToCathegories(event) {
+        event.preventDefault();
+        if(Popup.cathegories_disabled) {
+            let caths_button = document.querySelector('.NewEntry .Adds .switchTo > button:first-of-type > svg');
+            let tasks_button = document.querySelector('.NewEntry .Adds .switchTo > button:last-of-type > svg');
+            let title = document.querySelector('.NewEntry .Adds p.bold');
+            let caths = document.querySelector('.NewEntry .Adds .changeable.cathegories');
+            let tasks = document.querySelector('.NewEntry .Adds .changeable.tasks');
+            title.textContent = 'Категории';
+            tasks.style.display = 'none';
+            caths.style.display = 'flex';
+            caths_button.style.fill = '#aaa';
+            tasks_button.style.fill = '#000';
+            Popup.cathegories_disabled = false;
+            Popup.tasks_disabled = true;
+        }
+    }
+
+    static switchToTasks(event) {
+        event.preventDefault();
+        if(Popup.tasks_disabled) {
+            let caths_button = document.querySelector('.NewEntry .Adds .switchTo > button:first-of-type > svg');
+            let tasks_button = document.querySelector('.NewEntry .Adds .switchTo > button:last-of-type > svg');
+            let title = document.querySelector('.NewEntry .Adds p.bold');
+            let caths = document.querySelector('.NewEntry .Adds .changeable.cathegories');
+            let tasks = document.querySelector('.NewEntry .Adds .changeable.tasks');
+            title.textContent = 'Задачи';
+            caths.style.display = 'none';
+            tasks.style.display = 'flex';
+            caths_button.style.fill = '#000';
+            tasks_button.style.fill = '#aaa';
+            Popup.cathegories_disabled = true;
+            Popup.tasks_disabled = false;
         }
     }
 
@@ -268,8 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
     element.addEventListener('click', Popup.stop);
     element = document.querySelector('#DateTime_start');
     element.addEventListener('click', Popup.checkWithoutTime);
-    element.addEventListener('click', Popup.stop);
     element = document.querySelector('#DateTime_end');
     element.addEventListener('click', Popup.checkToEndDay);
-    element.addEventListener('click', Popup.stop);
+    element = document.querySelector('.NewEntry .Adds .switchTo > button:first-of-type');
+    element.addEventListener('click', Popup.switchToCathegories);
+    element = document.querySelector('.NewEntry .Adds .switchTo > button:last-of-type');
+    element.addEventListener('click', Popup.switchToTasks);
 });

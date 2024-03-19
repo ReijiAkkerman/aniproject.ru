@@ -102,7 +102,15 @@
                         }
                     }
 
-                    > .list {
+                    > .changeable {
+                        @include c.flex(start, null, column);
+
+                        &.tasks {
+                            display: none;
+                        }
+                    }
+
+                    .list {
                         @include c.flex(space-between);
                     }
                 }

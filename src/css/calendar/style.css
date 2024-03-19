@@ -148,26 +148,32 @@
   padding-top: 2px;
   padding-bottom: 5px;
 }
-.calendar > .NewEntry > form > .Adds > div > input {
+.calendar > .NewEntry > form > .Adds > div > div:first-child > div > button:first-of-type > svg {
+  fill: #aaa;
+}
+.calendar > .NewEntry > form > .Adds > div > .changeable {
+  gap: 10px;
+}
+.calendar > .NewEntry > form > .Adds > div input[type=text] {
   box-sizing: border-box;
   padding-left: 5px;
   width: 200px;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
 }
-.calendar > .NewEntry > form > .Adds > div > input::placeholder {
+.calendar > .NewEntry > form > .Adds > div input[type=text]::placeholder {
   font-size: 18px;
 }
-.calendar > .NewEntry > form > .Adds > div > .list {
+.calendar > .NewEntry > form > .Adds > div .list {
   min-width: 200px;
   border: 1px solid #000;
 }
-.calendar > .NewEntry > form > .Adds > div > .list svg {
+.calendar > .NewEntry > form > .Adds > div .list svg {
   width: 20px;
   height: 20px;
   padding-bottom: 1px;
 }
-.calendar > .NewEntry > form > .Adds > div > .list > p {
+.calendar > .NewEntry > form > .Adds > div .list > p {
   width: 100%;
   padding-left: 3px;
   border-right: 1px solid #000;
