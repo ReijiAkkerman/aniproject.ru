@@ -12,6 +12,8 @@
         static string $server = '172.18.0.2';
         static string $connect_from = '%';
 
+        static string $login;
+
         abstract public function view();
 
         protected function constructor(): void {
@@ -23,11 +25,13 @@
             $this->userID = false;
             $this->accessToken = false;
             $this->getRoute();
+            $this->getLogin(Page::$server);
         }
 
         private function getRoute(): void {
             $isAccessToken = $this->validateAccessToken(Page::$server);
             if($isAccessToken) {
+
                 setcookie('ID', $this->userID, time() + $this->activityTime, '/');
                 setcookie('token', $this->accessToken, time() + $this->activityTime, '/');
                 if(in_array(Router::$folder, $this->exclude)) {
@@ -71,5 +75,17 @@
             }
             else 
                 return false;
+        }
+
+        private function getLogin(string $server = 'localhost'): void {
+            $mysql = new \mysqli($server, 'Users', 'kISARAGIeKI4', 'Users');
+            $query = "SELECT login FROM users WHERE ID={$this->userID}";
+            $result = $mysql->query($query);
+            if($result->num_rows) {
+                foreach($result as $row) {
+                    Page::$login = $row['login'];
+                }
+            }
+            $mysql->close();
         }
     }

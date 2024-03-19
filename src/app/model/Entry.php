@@ -59,13 +59,7 @@
                     without_time,
                     to_end_day,
                     repetition_main,
-                    repetition_addition,
-                    cathegory,
-                    task_nesting,
-                    related_users,
-                    materials,
-                    parent,
-                    direct_descendants
+                    repetition_addition
                 ) VALUES (
                     '{$this->title}',
                     '{$this->description}',
@@ -75,13 +69,7 @@
                     $without_time,
                     $to_end_day,
                     '{$this->repetition_main}',
-                    '{$this->repetition_addition}',
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null
+                    '{$this->repetition_addition}'
                 )";
                 $mysql->query($query);
                 $mysql->close();
