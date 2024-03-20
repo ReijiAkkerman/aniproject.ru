@@ -16,6 +16,7 @@ header.common {
     
                 > div {
                     @include c.flex(start);
+                    display: none;
     
                     > .Search {
                         @include c.flex(start);
@@ -34,9 +35,17 @@ header.common {
             }
         }
 
-
         > .Links {
-            @include c.flex(start, null, row-reverse);
+            @include c.flex(start);
+
+            > div:first-of-type {
+                @include c.flex(start, null, row-reverse);
+                display: none;
+            }
+
+            .View {
+                @include c.flex(start, null, row-reverse);
+            }
         }
     }
 }

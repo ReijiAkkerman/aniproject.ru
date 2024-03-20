@@ -22,6 +22,7 @@ header.common > .Header > div:first-of-type > .Actions > div {
   display: flex;
   position: relative;
   justify-content: start;
+  display: none;
 }
 header.common > .Header > div:first-of-type > .Actions > div > .Search {
   display: flex;
@@ -37,6 +38,18 @@ header.common > .Header > div:first-of-type > .Info {
   justify-content: start;
 }
 header.common > .Header > .Links {
+  display: flex;
+  position: relative;
+  justify-content: start;
+}
+header.common > .Header > .Links > div:first-of-type {
+  display: flex;
+  position: relative;
+  justify-content: start;
+  flex-direction: row-reverse;
+  display: none;
+}
+header.common > .Header > .Links .View {
   display: flex;
   position: relative;
   justify-content: start;

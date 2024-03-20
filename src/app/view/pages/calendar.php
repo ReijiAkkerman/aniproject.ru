@@ -265,7 +265,7 @@
                                     <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
                                     <label for="task<?= "" ?>">Task1</label>
                                 </div>
-                                <div>
+                                .Header .Links .View > button <div>
                                     <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
                                     <label for="task<?= "" ?>">Task2</label>
                                 </div>
