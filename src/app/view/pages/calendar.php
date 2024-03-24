@@ -241,7 +241,7 @@
                             <input type="text" name="new_cath" placeholder="Новая категория">
                             <div class="recent">
                                 <div>
-                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="cath<?= "" ?>">
+                                    <input type="checkbox" name="cath<?= "0" ?>" value="<?= "hello" ?>" id="cath<?= "" ?>">
                                     <label for="cath<?= "" ?>">Cathegory1</label>
                                 </div>
                                 <div>
@@ -259,14 +259,14 @@
                                     </svg>
                                 </button>
                             </div>
-                            <input type="text" name="new_cath" placeholder="Новая задача">
+                            <input type="text" name="new_task" placeholder="Новая задача">
                             <div class="recent">
                                 <div>
-                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
+                                    <input type="checkbox" name="task<?= "0" ?>" value="<?= "hello" ?>" id="task<?= "" ?>">
                                     <label for="task<?= "" ?>">Task1</label>
                                 </div>
-                                .Header .Links .View > button <div>
-                                    <input type="checkbox" name="cath<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
+                                <div>
+                                    <input type="checkbox" name="task<?= "" ?>" value="<?= "" ?>" id="task<?= "" ?>">
                                     <label for="task<?= "" ?>">Task2</label>
                                 </div>
                             </div>
@@ -285,7 +285,7 @@
                         <input type="text" name="new_user" placeholder="Новый пользователь">
                         <div class="recent">
                             <div>
-                                <input type="checkbox" name="user<?= "" ?>" value="<?= "" ?>" id="user<?= "" ?>">
+                                <input type="checkbox" name="user<?= "0" ?>" value="<?= "haru" ?>" id="user<?= "" ?>">
                                 <label for="user<?= "" ?>">User1</label>
                             </div>
                             <div>

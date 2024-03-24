@@ -12,6 +12,6 @@
         case necessity = "#^on$#";
         case weekday = "#^(monday|tuesday|wednesday|thursday|friday|saturday|sunday)$#";
         case cath = "#^[a-zA-Z0-9_\- ]{1,200}$#";
-        case task_nesting = "#^[a-zA-Z0-9_\- >]$#";
-        case user = "#^[a-zA-Z0-9_\- ,]+$#";
+        case task_nesting = "#^[a-zA-Z0-9_\- >]+$#";
+        case users = "#^[a-zA-Z0-9_\- ,]+$#";
     }

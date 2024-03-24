@@ -3,13 +3,15 @@
 
     use project\control\parent\Page;
     use project\model\abstract\iEntry;
+    use project\model\abstract\iData;
     use project\model\traits\DateTime;
     use project\model\traits\Repetition;
-    use project\model\traits\Cath_n_Task;
+    use project\model\traits\Cath;
+    use project\model\traits\Task;
     use project\model\traits\Users;
     use project\model\enum\Regex;
 
-    class Entry implements iEntry {
+    class Entry implements iEntry, iData {
         public string $title;
         public string $description;
         public int $start;
@@ -35,8 +37,12 @@
                 'getTitle',
                 'getDescription',
                 'getDateTimeValues',
-                'getRepetitionValues'
+                'getRepetitionValues',
+                'getCathValues',
+                'getTaskValues',
+                'getUsersValues'
             ];
+            $this->error_message = '';
         }
 
         public function getEntries(): void {
@@ -60,7 +66,10 @@
                     without_time,
                     to_end_day,
                     repetition_main,
-                    repetition_addition
+                    repetition_addition,
+                    cathegory,
+                    task_nesting,
+                    related_users
                 ) VALUES (
                     '{$this->title}',
                     '{$this->description}',
@@ -70,7 +79,10 @@
                     $without_time,
                     $to_end_day,
                     '{$this->repetition_main}',
-                    '{$this->repetition_addition}'
+                    '{$this->repetition_addition}',
+                    '{$this->cathegory}',
+                    '{$this->task_nesting}',
+                    '{$this->users}'
                 )";
                 $mysql->query($query);
                 $mysql->close();
@@ -128,7 +140,7 @@
         }
 
         use DateTime {
-            DateTime::getValues insteadOf Repetition;
+            DateTime::getValues insteadOf Repetition, Cath, Task, Users;
 
             DateTime::getValues as getDateTimeValues;
             DateTime::defineType as defineDateTimeType;
@@ -140,9 +152,20 @@
             Repetition::getMainTypesNumber as getRepetitionMainTypesNumber;
         }
 
+        use Cath {
+            Cath::getValues as getCathValues;
+        }
+
+        use Task {
+            Task::getValues as getTaskValues;
+        }
+
+        use Users {
+            Users::getValues as getUsersValues;
+        }
+
         private function checkFunctions(): bool {
             for($i = 0; $i < sizeof($this->functions); $i++) {
-                echo $i;
                 $functionName = $this->functions[$i];
                 $true = $this->$functionName();
                 if(!$true) {
