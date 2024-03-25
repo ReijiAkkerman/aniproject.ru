@@ -9,7 +9,7 @@
         protected string $userID;
         protected string $accessToken;
 
-        static string $server = '172.18.0.2';
+        static string $server = '172.21.0.2';
         static string $connect_from = '%';
 
         static string $user_login;

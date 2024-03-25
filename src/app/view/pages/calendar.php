@@ -16,7 +16,15 @@
             $year = $calendar->start->format('o');
             foreach($calendar->period as $day) {
         ?>
-            <div class="Day <?php if($day->format('w') == 0) echo "start" ?>" id="<?php if($calendar->now == $day) echo "now"; ?>">
+            <div class="Day <?php 
+                if($day->format('w') == 0) echo "start";
+                echo " d_";
+                echo $day->format('d');
+                echo "_" . $day->format('n');
+                echo '_' . $day->format('o');
+            ?>" id="<?php 
+                if($calendar->now == $day) echo "now"; 
+            ?>">
                 <div class="Header">
                     <button>
                     <?php

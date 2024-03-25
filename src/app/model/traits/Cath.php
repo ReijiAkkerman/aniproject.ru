@@ -16,7 +16,7 @@
             else if($new_cath) 
                 return true;
             else {
-                $this->cathegory = 'none';
+                $this->cathegory = '';
                 return true;
             }
         }

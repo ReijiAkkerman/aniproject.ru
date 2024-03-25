@@ -7,19 +7,23 @@
         public function getValues(): bool {
             $newTask = $this->isNewTask();
             $recentTasks = $this->areRecentTasks();
-            if($newTask !== false && $recentTasks !== false) {
-                if($newTask && $recentTasks) {
-                    $this->error_message .= urlencode("Ошибка!!! Одновременно не может быть указаны новая и существующая задача!!!");
+            if($this->cathegory) {
+                if($newTask !== false && $recentTasks !== false) {
+                    if($newTask && $recentTasks) {
+                        $this->error_message .= urlencode("Ошибка!!! Одновременно не может быть указаны новая и существующая задача!!!");
+                        return false;
+                    }
+                    else if($newTask) 
+                        return true;
+                    else if($recentTasks) 
+                        return true;
+                    else {
+                        $this->task_nesting = '';
+                        return true;
+                    }
+                }
+                else 
                     return false;
-                }
-                else if($newTask) 
-                    return true;
-                else if($recentTasks) 
-                    return true;
-                else {
-                    $this->task_nesting = 'none';
-                    return true;
-                }
             }
             else 
                 return false;
