@@ -1,6 +1,3 @@
-<?php 
-    use project\view\Calendar;
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,21 +7,20 @@
     <?php include_once __DIR__ . "/components/common/header.php" ?>
         <main class="Calendar">
         <?php
-            $calendar = new Calendar();
             $calendar->getDefaultDates();
             $month = $calendar->start->format('n');
-            $year = $calendar->start->format('o');
+            $year = $calendar->start->format('Y');
             foreach($calendar->period as $day) {
         ?>
             <div class="Day <?php 
                 if($day->format('w') == 0) echo "start";
                 echo " d_";
-                echo $day->format('d');
+                echo $day->format('j');
                 echo "_" . $day->format('n');
-                echo '_' . $day->format('o');
-            ?>" id="<?php 
-                if($calendar->now == $day) echo "now"; 
-            ?>">
+                echo '_' . $day->format('Y');
+            ?>"<?php 
+                if($calendar->now == $day) echo 'id="now"'; 
+            ?>>
                 <div class="Header">
                     <button>
                     <?php
@@ -33,8 +29,8 @@
                             echo "/" . $day->format('n');
                         else 
                             echo "<span>/" . $day->format('n') . "</span>";
-                        if($year != $day->format('o'))
-                            echo '/' . $day->format('o');
+                        if($year != $day->format('Y'))
+                            echo '/' . $day->format('Y');
                     ?>
                     </button>
                 </div>
@@ -44,7 +40,7 @@
             </div>
         <?php
                 $month = $day->format('n');
-                $year = $day->format('o');
+                $year = $day->format('Y');
             } 
         ?>
         </main>
@@ -214,6 +210,11 @@
                                 <input type="text" maxlength=2 name="interval_minute">
                             </div>
                         </div>
+                        <div class="Hidden">
+                            <input type="hidden" name="repeatUpTo_year">
+                            <input type="hidden" name="repeatUpTo_month">
+                            <input type="hidden" name="repeatUpTo_day">
+                        </div>
                     </div>
                 </div>
                 <div class="Adds">
@@ -326,14 +327,32 @@
                 </div>
                 <div class="Calendar">
                 <?php
-                    for($i = 0; $i < 70; $i++) {
+                    $_start = $calendar->getRepeatUpToDates();
+                    $_month = $_start->format('n');
+                    $_year = $_start->format('Y');
+                    foreach($calendar->repeatUpTo_period as $day) {
                 ?>
-                    <button>
+                    <button class="<?php 
+                        echo " d_";
+                        echo $day->format('j');
+                        echo "_" . $day->format('n');
+                        echo '_' . $day->format('Y');
+                    ?>">
                         <div>
-                            <p>1/1/24</p>
+                            <p><?php 
+                                echo $day->format('d');
+                                if($_month != $day->format('n'))
+                                    echo '/' . $day->format('n');
+                                if($_year != $day->format('Y'))
+                                    echo '/' . $day->format('Y');
+                            ?></p>
                         </div>
                     </button>
-                <?php } ?>
+                <?php 
+                        $_month = $day->format('n');
+                        $_year = $day->format('Y');
+                    } 
+                ?>
                 </div>
             </div>
         </section>

@@ -1,7 +1,10 @@
 <?php
     namespace project\view;
 
-    class Calendar {
+    use project\view\abstract\iRepeatUpTo;
+    use project\view\traits\RepeatUpTo;
+
+    class Calendar implements iRepeatUpTo {
         public \DateTime $start;
         public \DateTimeImmutable $now;
         public \DateTime $end;
@@ -16,12 +19,12 @@
         }
         
         public function getDefaultDates(): void {
-            $this->getStart();
-            $this->getEnd();
+            $this->getStartDate();
+            $this->getEndDate();
             $this->period = new \DatePeriod($this->start, $this->dayInterval, $this->end);
         }
 
-        private function getStart(): void {
+        private function getStartDate(): void {
             $this->start = \DateTime::createFromImmutable($this->now);
             $this->start->sub($this->calendarInterval);
             $deltaDays = $this->start->format('w');
@@ -29,12 +32,16 @@
             $this->start->sub($deltaDaysInterval);
         }
 
-        private function getEnd(): void {
+        private function getEndDate(): void {
             $this->end = \DateTime::createFromImmutable($this->now);
             $this->end->add($this->calendarInterval);
             $deltaDays = $this->end->format('w');
             $deltaDays = 7 - $deltaDays;
             $deltaDaysInterval = new \DateInterval("P{$deltaDays}D");
             $this->end->add($deltaDaysInterval);
+        }
+
+        use RepeatUpTo {
+            RepeatUpTo::getDates as getRepeatUpToDates;
         }
     }

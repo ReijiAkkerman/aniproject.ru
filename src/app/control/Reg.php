@@ -127,6 +127,7 @@
                 to_end_day BOOLEAN,
                 repetition_main VARCHAR(100),
                 repetition_addition VARCHAR(100),
+                repetition_upto INT,
                 cathegory VARCHAR(255),
                 task_nesting TEXT,
                 related_users TEXT,

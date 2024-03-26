@@ -233,20 +233,6 @@ class Popup {
         }
     }
 
-    // static showLinks() {
-    //     if(typeof Popup.links_status === 'undefined') 
-    //         Popup.links_status = false;
-    //     let element = document.querySelector('.Header .Links > div:first-of-type');
-    //     if(Popup.links_status) {
-    //         element.style.display = 'none';
-    //         Popup.links_status = false;
-    //     }
-    //     else {
-    //         element.style.display = 'flex';
-    //         Popup.links_status = true;
-    //     }
-    // }
-
     hideRestRepeats() {
         let element;
         let $array = ['#every_year', '#every_day', '#every_month', '#every_week'];
@@ -331,6 +317,4 @@ document.addEventListener('DOMContentLoaded', function() {
     element.addEventListener('click', Popup.switchToCathegories);
     element = document.querySelector('.NewEntry .Adds .switchTo > button:last-of-type');
     element.addEventListener('click', Popup.switchToTasks);
-    // element = document.querySelector('.Header .Links .View > button');
-    // element.addEventListener('click', Popup.showLinks);
 });

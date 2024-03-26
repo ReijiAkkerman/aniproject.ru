@@ -85,6 +85,10 @@
                         @include c.flex(space-around);
                         display: none;
                     }
+
+                    > .Hidden {
+                        display: none;
+                    }
                 }
             }
 

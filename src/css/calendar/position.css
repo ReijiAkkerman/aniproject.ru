@@ -90,6 +90,9 @@
   justify-content: space-around;
   display: none;
 }
+.calendar > .NewEntry > form > .Main > .Supplement > .Hidden {
+  display: none;
+}
 .calendar > .NewEntry > form > .Adds {
   display: flex;
   position: relative;

@@ -116,4 +116,8 @@
                 default => false
             };
         }
+
+        private function getRepetitionUpTo(): void {
+            
+        }
     }

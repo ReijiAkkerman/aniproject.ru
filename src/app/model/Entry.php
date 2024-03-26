@@ -166,6 +166,7 @@
 
         private function checkFunctions(): bool {
             for($i = 0; $i < sizeof($this->functions); $i++) {
+                echo $i;
                 $functionName = $this->functions[$i];
                 $true = $this->$functionName();
                 if(!$true) {
