@@ -82,9 +82,13 @@ class Entry {
         let repeatUpTo_year = document.querySelector('.NewEntry .Supplement .Hidden input[name="repeatUpTo_year"]');
         let repeatUpTo_month = document.querySelector('.NewEntry .Supplement .Hidden input[name="repeatUpTo_month"]');
         let repeatUpTo_day = document.querySelector('.NewEntry .Supplement .Hidden input[name="repeatUpTo_day"]');
-        repeatUpTo_year.value = year.value = date[3];
-        repeatUpTo_month.value = month.value = date[2];
-        repeatUpTo_day.value = day.value = date[1];
+        if(this.children[0].className == 'inactive') 
+            ;
+        else {
+            repeatUpTo_year.value = year.value = date[3];
+            repeatUpTo_month.value = month.value = date[2];
+            repeatUpTo_day.value = day.value = date[1];
+        }
     }
 }
 

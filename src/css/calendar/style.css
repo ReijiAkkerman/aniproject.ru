@@ -235,8 +235,15 @@
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
 }
+.calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div.inactive {
+  background-color: #aaa;
+}
+.calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div.inactive:hover {
+  background-color: #aaa;
+  cursor: default;
+}
 .calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div:hover {
-  background-color: #ccc;
+  background-color: rgba(170, 119, 119, 0.3333333333);
 }
 .calendar > .NewEntry > .RepeatUpTo > .Calendar > button > div > p {
   font-size: 10px;

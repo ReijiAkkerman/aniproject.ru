@@ -330,15 +330,22 @@
                     $_start = $calendar->getRepeatUpToDates();
                     $_month = $_start->format('n');
                     $_year = $_start->format('Y');
+                    $_inactive = true;
                     foreach($calendar->repeatUpTo_period as $day) {
+                        if($_inactive)
+                            if($day == $calendar->now)
+                                $_inactive = false;
                 ?>
-                    <button class="<?php 
-                        echo " d_";
+                    <button class="<?php
+                        echo "d_";
                         echo $day->format('j');
                         echo "_" . $day->format('n');
                         echo '_' . $day->format('Y');
                     ?>">
-                        <div>
+                        <div class="<?php 
+                            if($_inactive)
+                                echo 'inactive';
+                        ?>">
                             <p><?php 
                                 echo $day->format('d');
                                 if($_month != $day->format('n'))
